@@ -1,0 +1,201 @@
+---
+import type { EpisodeCta, VisualSpec } from "../types/content";
+
+interface Props {
+  visual: VisualSpec;
+  cta: EpisodeCta;
+}
+
+const { visual, cta } = Astro.props;
+---
+
+<div class:list={["scene-visual", `visual-${visual.kind}`]} aria-label="Supporting visual">
+  {visual.kind === "portal-shift" && (
+    <div class="portal-shift">
+      <div class="portal-window">
+        <div class="window-bar">
+          <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>{visual.portalLabel}</span>
+          <span class="sync-chip">In sync</span>
+        </div>
+        <div class="portal-body">
+          <div class="portal-sidebar" aria-hidden="true">
+            <b></b><b></b><b></b><b></b><b></b>
+          </div>
+          <div class="portal-record">
+            <span class="record-kicker">COMPANY RECORD</span>
+            <strong>Northstar Systems</strong>
+            <div class="property-row"><span>Segment</span><b>Mid-market</b></div>
+            <div class="property-row"><span>Motion</span><b>Inbound</b></div>
+            <div class="property-row"><span>Owner model</span><b>Contact-led</b></div>
+            <div class="property-row"><span>Revenue model</span><b>One-off</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="business-changes">
+        <span class="change-label">THE BUSINESS NOW</span>
+        {visual.changes.map((change, index) => (
+          <div class="change-chip" style={`--delay:${index}`}><i></i>{change}</div>
+        ))}
+      </div>
+      <div class="status-stamp"><i></i>{visual.status}</div>
+    </div>
+  )}
+
+  {visual.kind === "comparison" && (
+    <div class="comparison-table">
+      <div class="comparison-head"><span>Visible symptom</span><span>Quick fix</span><span>Deeper question</span></div>
+      {visual.items.map((item, index) => (
+        <div class="comparison-row" style={`--row:${index}`}>
+          <strong>{item.symptom}</strong>
+          <span>{item.assumption}</span>
+          <span class="question-cell"><i>?</i>{item.question}</span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {visual.kind === "state-model" && (
+    <div class="state-model">
+      <div class="state-rail" aria-hidden="true"></div>
+      {visual.states.map((state, index) => (
+        <article class="state-card" style={`--state:${index}`}>
+          <span>{state.number}</span>
+          <strong>{state.label}</strong>
+          <p>{state.detail}</p>
+        </article>
+      ))}
+      <div class="state-centre"><span></span><strong>{visual.centre}</strong></div>
+    </div>
+  )}
+
+  {visual.kind === "drift-types" && (
+    <div class="drift-types">
+      {visual.types.map((type, index) => (
+        <article class="drift-type" style={`--type:${index}`}>
+          <div class="drift-type-head"><span>0{index + 1}</span><strong>{type.label}</strong></div>
+          <div class="drift-path"><span>{type.from}</span><i></i><span>{type.to}</span></div>
+          <div class="drift-status"><i></i>{type.status}</div>
+        </article>
+      ))}
+    </div>
+  )}
+
+  {visual.kind === "chain" && (
+    <div class="drift-chain">
+      {visual.steps.map((step, index) => (
+        <div class:list={["chain-step", index === visual.hinge && "is-hinge"]} style={`--step:${index}`}>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{step}</strong>
+          {index < visual.steps.length - 1 && <i aria-hidden="true">→</i>}
+        </div>
+      ))}
+      <div class="hinge-note">THE HINGE</div>
+    </div>
+  )}
+
+  {visual.kind === "record-map" && (
+    <div class="record-map">
+      <div class="before-model">
+        <span class="map-label">ORIGINAL MODEL</span>
+        {visual.before.map((item) => <div class="record-pill"><i></i>{item}</div>)}
+      </div>
+      <div class="motion-change"><span>+</span><strong>{visual.change}</strong><i></i></div>
+      <div class="impact-grid">
+        {visual.impacts.map((impact, index) => (
+          <article style={`--impact:${index}`}>
+            <span>{impact.label}</span>
+            <strong>{impact.value}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "orbit" && (
+    <div class="surface-orbit">
+      <div class="orbit-ring orbit-ring-one" aria-hidden="true"></div>
+      <div class="orbit-ring orbit-ring-two" aria-hidden="true"></div>
+      <div class="orbit-centre"><strong>{visual.centre.split("\n")[0]}</strong><span>{visual.centre.split("\n")[1]}</span></div>
+      {visual.surfaces.map((surface, index) => (
+        <div class="orbit-node" style={`--node:${index}; --nodes:${visual.surfaces.length}`}>
+          <span>{String(index + 1).padStart(2, "0")}</span><strong>{surface}</strong>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {visual.kind === "matrix" && (
+    <div class="diagnostic-matrix">
+      <div class="matrix-row matrix-head">
+        {visual.columns.map((column) => <span>{column}</span>)}
+        <span>Diagnosis</span>
+      </div>
+      {visual.rows.map((row, index) => (
+        <div class:list={["matrix-row", `matrix-${row.tone}`]} style={`--matrix-row:${index}`}>
+          {row.values.map((value) => <span><i></i>{value}</span>)}
+          <strong>{row.result}</strong>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {visual.kind === "dependency-map" && (
+    <div class="dependency-map">
+      <div class="decision-card">
+        <span>COMMERCIAL DECISION</span>
+        <strong>{visual.decision}</strong>
+      </div>
+      <div class="dependency-trunk" aria-hidden="true"></div>
+      <div class="dependency-grid">
+        {visual.dependencies.map((dependency, index) => (
+          <div class="dependency-node" style={`--dependency:${index}`}><i></i><span>{dependency}</span></div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "control-loop" && (
+    <div class="control-loop">
+      <div class="change-trigger"><span>CHANGE TRIGGER</span><strong>{visual.trigger}</strong></div>
+      <div class="control-path">
+        {visual.questions.map((question, index) => (
+          <div class="control-step" style={`--control:${index}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span><strong>{question}</strong>
+          </div>
+        ))}
+      </div>
+      <div class="control-outcome"><i></i><span>{visual.outcome}</span></div>
+    </div>
+  )}
+
+  {visual.kind === "cadence" && (
+    <div class="cadence-visual">
+      <div class="cadence-track">
+        {visual.principles.map((principle, index) => (
+          <div class="cadence-point" style={`--point:${index}`}><i></i><span>{principle}</span></div>
+        ))}
+      </div>
+      <div class="cadence-card">
+        <span>RECALIBRATION CADENCE</span>
+        <strong>{visual.cadence}</strong>
+        <div><i></i>{visual.output}</div>
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "close" && (
+    <div class="close-visual">
+      <div class="close-question">{visual.question}</div>
+      <div class="close-states">
+        {visual.states.map((state, index) => (
+          <div style={`--close:${index}`}><span>0{index + 1}</span><strong>{state}</strong></div>
+        ))}
+      </div>
+      <a class="button button-primary close-cta" href={cta.url} target="_blank" rel="noreferrer">
+        {visual.ctaLabel} <span aria-hidden="true">→</span>
+      </a>
+      <p>{cta.note}</p>
+    </div>
+  )}
+</div>

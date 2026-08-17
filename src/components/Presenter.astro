@@ -1,0 +1,303 @@
+---
+import type { Episode } from "../types/content";
+import SceneVisual from "./SceneVisual.astro";
+
+interface Props {
+  episode: Episode;
+}
+
+const { episode } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<script is:inline>
+  if (new URLSearchParams(window.location.search).get("record") === "1") {
+    document.documentElement.classList.add("record-view");
+  }
+</script>
+
+<main
+  class="presenter-shell"
+  data-presenter
+  data-mode="rehearsal"
+  data-head-side="right"
+  data-total={episode.scenes.length}
+>
+  <header class="presenter-topbar presenter-chrome">
+    <a class="brand" href={base} aria-label="Back to Revenue Rounds library">
+      <span class="brand-mark" aria-hidden="true">G</span>
+      <span>
+        <strong>GTM Diagnostics</strong>
+        <small>Revenue Rounds</small>
+      </span>
+    </a>
+
+    <div class="presenter-status">
+      <span class="mode-indicator"><i></i><b data-mode-label>Rehearsal</b></span>
+      <span class="timer" aria-label="Elapsed time" data-timer>00:00</span>
+      <button class="icon-button" type="button" data-timer-toggle aria-label="Start timer" title="Start or pause timer (T)">
+        <span class="play-icon" aria-hidden="true"></span>
+      </button>
+      <button class="text-button" type="button" data-record-toggle>Record view</button>
+    </div>
+  </header>
+
+  <section class="scene-deck" aria-label={`${episode.title} presentation`}>
+    {episode.scenes.map((scene, index) => (
+      <article
+        id={scene.id}
+        class:list={["scene", `scene-${scene.tone}`, index === 0 && "is-active"]}
+        data-scene
+        data-index={index}
+        aria-hidden={index === 0 ? "false" : "true"}
+      >
+        <div class="scene-grid" aria-hidden="true"></div>
+        <div class="scene-glow" aria-hidden="true"></div>
+        <div class="scene-stage">
+          <div class="scene-copy">
+            <p class="scene-eyebrow"><span>{String(index + 1).padStart(2, "0")}</span>{scene.eyebrow}</p>
+            <h1>{scene.heading}</h1>
+            <p class="scene-lead">{scene.lead}</p>
+            {scene.emphasis && <blockquote>{scene.emphasis}</blockquote>}
+          </div>
+          <SceneVisual visual={scene.visual} cta={episode.cta} />
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <aside class="head-safe-zone presenter-chrome" aria-hidden="true">
+    <span>Floating-head safe zone</span>
+    <i></i>
+  </aside>
+
+  <button class="record-hit-zone hit-prev" type="button" data-prev aria-label="Previous scene"></button>
+  <button class="record-hit-zone hit-next" type="button" data-next aria-label="Next scene"></button>
+
+  <footer class="presenter-controls presenter-chrome">
+    <div class="scene-stepper">
+      <button class="step-button" type="button" data-prev aria-label="Previous scene"><span aria-hidden="true">←</span></button>
+      <div class="scene-readout" aria-live="polite">
+        <strong data-current-number>01</strong>
+        <span>/ {String(episode.scenes.length).padStart(2, "0")}</span>
+      </div>
+      <button class="step-button" type="button" data-next aria-label="Next scene"><span aria-hidden="true">→</span></button>
+    </div>
+
+    <nav class="scene-dots" aria-label="Choose a scene">
+      {episode.scenes.map((scene, index) => (
+        <button
+          class:list={["scene-dot", index === 0 && "is-current"]}
+          type="button"
+          data-scene-target={index}
+          aria-label={`Go to scene ${index + 1}: ${scene.heading}`}
+          aria-current={index === 0 ? "step" : undefined}
+        ><span></span></button>
+      ))}
+    </nav>
+
+    <div class="control-actions">
+      <button class="text-button" type="button" data-head-toggle>Head: right</button>
+      <button class="text-button" type="button" data-fullscreen>Full screen</button>
+      <button class="icon-button help-button" type="button" data-help-toggle aria-label="Show keyboard shortcuts">?</button>
+    </div>
+  </footer>
+
+  <aside class="shortcut-panel presenter-chrome" data-shortcuts hidden>
+    <div class="shortcut-head"><strong>Presenter shortcuts</strong><button type="button" data-help-toggle aria-label="Close keyboard shortcuts">×</button></div>
+    <dl>
+      <div><dt>← / → / Space</dt><dd>Navigate scenes</dd></div>
+      <div><dt>Home / End</dt><dd>First or last scene</dd></div>
+      <div><dt>R</dt><dd>Toggle clean record view</dd></div>
+      <div><dt>H</dt><dd>Move floating-head safe zone</dd></div>
+      <div><dt>F</dt><dd>Toggle full screen</dd></div>
+      <div><dt>T</dt><dd>Start or pause timer</dd></div>
+    </dl>
+  </aside>
+
+  <div class="sr-only" aria-live="polite" data-announcer></div>
+</main>
+
+<script>
+  const shell = document.querySelector<HTMLElement>("[data-presenter]");
+
+  if (shell) {
+    const scenes = Array.from(shell.querySelectorAll<HTMLElement>("[data-scene]"));
+    const dots = Array.from(shell.querySelectorAll<HTMLButtonElement>("[data-scene-target]"));
+    const currentNumber = shell.querySelector<HTMLElement>("[data-current-number]");
+    const announcer = shell.querySelector<HTMLElement>("[data-announcer]");
+    const modeLabel = shell.querySelector<HTMLElement>("[data-mode-label]");
+    const headButtons = Array.from(shell.querySelectorAll<HTMLButtonElement>("[data-head-toggle]"));
+    const shortcutPanel = shell.querySelector<HTMLElement>("[data-shortcuts]");
+    const timerDisplay = shell.querySelector<HTMLElement>("[data-timer]");
+    const timerButton = shell.querySelector<HTMLButtonElement>("[data-timer-toggle]");
+    let activeIndex = Math.max(0, scenes.findIndex((scene) => `#${scene.id}` === window.location.hash));
+    let recordMode = new URLSearchParams(window.location.search).get("record") === "1";
+    let headSide: "left" | "right" =
+      window.localStorage.getItem("revenue-rounds-head-side") === "left" ? "left" : "right";
+    let touchStartX = 0;
+    let timerStartedAt = 0;
+    let timerElapsed = 0;
+    let timerRunning = false;
+    let timerFrame = 0;
+
+    const formatTime = (milliseconds: number) => {
+      const totalSeconds = Math.floor(milliseconds / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    };
+
+    const tickTimer = () => {
+      if (!timerRunning || !timerDisplay) return;
+      const currentElapsed = timerElapsed + performance.now() - timerStartedAt;
+      timerDisplay.textContent = formatTime(currentElapsed);
+      timerFrame = window.requestAnimationFrame(tickTimer);
+    };
+
+    const toggleTimer = () => {
+      timerRunning = !timerRunning;
+      if (timerRunning) {
+        timerStartedAt = performance.now();
+        timerButton?.classList.add("is-running");
+        timerButton?.setAttribute("aria-label", "Pause timer");
+        tickTimer();
+      } else {
+        timerElapsed += performance.now() - timerStartedAt;
+        timerButton?.classList.remove("is-running");
+        timerButton?.setAttribute("aria-label", "Start timer");
+        window.cancelAnimationFrame(timerFrame);
+      }
+    };
+
+    const updateHash = (sceneId: string) => {
+      const url = new URL(window.location.href);
+      url.hash = sceneId;
+      window.history.replaceState(null, "", url);
+    };
+
+    const showScene = (nextIndex: number, updateUrl = true) => {
+      activeIndex = Math.min(Math.max(nextIndex, 0), scenes.length - 1);
+      scenes.forEach((scene, index) => {
+        const active = index === activeIndex;
+        scene.classList.toggle("is-active", active);
+        scene.setAttribute("aria-hidden", String(!active));
+      });
+      dots.forEach((dot, index) => {
+        const active = index === activeIndex;
+        dot.classList.toggle("is-current", active);
+        if (active) dot.setAttribute("aria-current", "step");
+        else dot.removeAttribute("aria-current");
+      });
+      if (currentNumber) currentNumber.textContent = String(activeIndex + 1).padStart(2, "0");
+      if (announcer) announcer.textContent = `Scene ${activeIndex + 1} of ${scenes.length}`;
+      if (updateUrl) updateHash(scenes[activeIndex].id);
+    };
+
+    const setRecordMode = (enabled: boolean) => {
+      recordMode = enabled;
+      shell.dataset.mode = enabled ? "record" : "rehearsal";
+      document.documentElement.classList.toggle("record-view", enabled);
+      if (modeLabel) modeLabel.textContent = enabled ? "Recording" : "Rehearsal";
+      const url = new URL(window.location.href);
+      if (enabled) url.searchParams.set("record", "1");
+      else url.searchParams.delete("record");
+      window.history.replaceState(null, "", url);
+    };
+
+    const setHeadSide = (side: "left" | "right") => {
+      headSide = side;
+      shell.dataset.headSide = side;
+      window.localStorage.setItem("revenue-rounds-head-side", side);
+      headButtons.forEach((button) => (button.textContent = `Head: ${side}`));
+    };
+
+    const toggleFullscreen = async () => {
+      try {
+        if (!document.fullscreenEnabled) {
+          if (announcer) {
+            announcer.textContent = "Full screen is unavailable in this browser. Use record view instead.";
+          }
+          return;
+        }
+
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else await document.documentElement.requestFullscreen();
+      } catch {
+        if (announcer) {
+          announcer.textContent = "Full screen is unavailable in this browser. Use record view instead.";
+        }
+      }
+    };
+
+    shell.querySelectorAll<HTMLButtonElement>("[data-next]").forEach((button) =>
+      button.addEventListener("click", () => showScene(activeIndex + 1)),
+    );
+    shell.querySelectorAll<HTMLButtonElement>("[data-prev]").forEach((button) =>
+      button.addEventListener("click", () => showScene(activeIndex - 1)),
+    );
+    dots.forEach((dot) => dot.addEventListener("click", () => showScene(Number(dot.dataset.sceneTarget))));
+    shell.querySelectorAll<HTMLButtonElement>("[data-record-toggle]").forEach((button) =>
+      button.addEventListener("click", () => setRecordMode(!recordMode)),
+    );
+    headButtons.forEach((button) => button.addEventListener("click", () => setHeadSide(headSide === "right" ? "left" : "right")));
+    shell.querySelectorAll<HTMLButtonElement>("[data-fullscreen]").forEach((button) =>
+      button.addEventListener("click", () => void toggleFullscreen()),
+    );
+    shell.querySelectorAll<HTMLButtonElement>("[data-help-toggle]").forEach((button) =>
+      button.addEventListener("click", () => {
+        if (shortcutPanel) shortcutPanel.hidden = !shortcutPanel.hidden;
+      }),
+    );
+    timerButton?.addEventListener("click", toggleTimer);
+    timerButton?.addEventListener("dblclick", () => {
+      timerElapsed = 0;
+      timerStartedAt = performance.now();
+      if (timerDisplay) timerDisplay.textContent = "00:00";
+    });
+
+    document.addEventListener("keydown", (event) => {
+      const target = event.target as HTMLElement | null;
+      if (target?.matches("input, textarea, select")) return;
+      if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+        event.preventDefault();
+        showScene(activeIndex + 1);
+      } else if (["ArrowLeft", "PageUp"].includes(event.key)) {
+        event.preventDefault();
+        showScene(activeIndex - 1);
+      } else if (event.key === "Home") {
+        event.preventDefault();
+        showScene(0);
+      } else if (event.key === "End") {
+        event.preventDefault();
+        showScene(scenes.length - 1);
+      } else if (event.key.toLowerCase() === "r") {
+        setRecordMode(!recordMode);
+      } else if (event.key.toLowerCase() === "h") {
+        setHeadSide(headSide === "right" ? "left" : "right");
+      } else if (event.key.toLowerCase() === "f") {
+        void toggleFullscreen();
+      } else if (event.key.toLowerCase() === "t") {
+        toggleTimer();
+      } else if (event.key === "?" && shortcutPanel) {
+        shortcutPanel.hidden = !shortcutPanel.hidden;
+      }
+    });
+
+    shell.addEventListener("pointerdown", (event) => {
+      touchStartX = event.clientX;
+    });
+    shell.addEventListener("pointerup", (event) => {
+      const distance = event.clientX - touchStartX;
+      if (Math.abs(distance) > 80) showScene(activeIndex + (distance < 0 ? 1 : -1));
+    });
+    window.addEventListener("hashchange", () => {
+      const hashIndex = scenes.findIndex((scene) => `#${scene.id}` === window.location.hash);
+      if (hashIndex >= 0) showScene(hashIndex, false);
+    });
+
+    setHeadSide(headSide);
+    setRecordMode(recordMode);
+    showScene(activeIndex, !window.location.hash);
+  }
+</script>

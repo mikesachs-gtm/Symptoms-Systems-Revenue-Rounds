@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths } from "astro";
+import Presenter from "../../components/Presenter.astro";
+import { episodes } from "../../data/episodes";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  episodes.map((episode) => ({ params: { slug: episode.slug }, props: { episode } }))) satisfies GetStaticPaths;
+
+const { episode } = Astro.props;
+---
+
+<BaseLayout title={`${episode.title} | Revenue Rounds`} description={episode.summary} className="presenter-page">
+  <Presenter episode={episode} />
+</BaseLayout>

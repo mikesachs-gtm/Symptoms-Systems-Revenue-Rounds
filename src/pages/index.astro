@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { episodes } from "../data/episodes";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Symptoms & Systems: Revenue Rounds | GTM Diagnostics"
+  description="Record-ready visual walkthroughs of the operating systems behind HubSpot."
+  className="library-page"
+>
+  <header class="library-nav">
+    <a class="brand" href={base} aria-label="GTM Diagnostics Revenue Rounds home">
+      <span class="brand-mark" aria-hidden="true">G</span>
+      <span>
+        <strong>GTM Diagnostics</strong>
+        <small>Symptoms & Systems</small>
+      </span>
+    </a>
+    <span class="library-badge">Presenter series</span>
+  </header>
+
+  <main>
+    <section class="library-hero">
+      <div class="library-grid" aria-hidden="true"></div>
+      <div class="library-hero-copy">
+        <p class="eyebrow">Symptoms & Systems · Revenue Rounds</p>
+        <h1>See the operating system behind the symptom.</h1>
+        <p class="library-lead">
+          Record-ready visual walkthroughs for revenue leaders building a more trusted,
+          inspectable, and scalable system inside HubSpot.
+        </p>
+        <div class="library-meta" aria-label="Series details">
+          <span>29 source articles</span>
+          <span>1 presenter pilot</span>
+          <span>Keyboard-ready</span>
+        </div>
+      </div>
+      <aside class="library-principle">
+        <span class="principle-number">01</span>
+        <p>Every visible symptom points to a deeper system.</p>
+        <div class="principle-path" aria-hidden="true">
+          <span>Symptom</span><i></i><span>System</span><i></i><span>Decision</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="episode-library" aria-labelledby="episodes-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Presenter library</p>
+          <h2 id="episodes-title">Choose a Revenue Round.</h2>
+        </div>
+        <p>Each episode opens as a guided 16:9 recording experience.</p>
+      </div>
+
+      <div class="episode-grid">
+        {episodes.map((episode, index) => (
+          <article class="episode-card">
+            <div class="episode-card-top">
+              <span class="episode-index">{String(index + 1).padStart(2, "0")}</span>
+              <span class="episode-duration">{episode.duration}</span>
+            </div>
+            <p class="episode-pillar">{episode.pillar}</p>
+            <h3>{episode.title}</h3>
+            <p>{episode.summary}</p>
+            <div class="episode-card-bottom">
+              <span>{episode.scenes.length} scenes</span>
+              <a class="button button-primary" href={`${base}episodes/${episode.slug}/`}>
+                Start walkthrough <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer class="library-footer">
+    <span>GTM Diagnostics</span>
+    <span>Groningen · The Netherlands</span>
+    <a href="https://gtmdiagnostics.com" rel="noreferrer">gtmdiagnostics.com</a>
+  </footer>
+</BaseLayout>
