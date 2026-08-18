@@ -38,6 +38,7 @@ export type VisualSpec =
   | {
       kind: "surface-grid";
       centre: string;
+      label?: string;
       surfaces: Array<{ label: string; detail: string }>;
     }
   | {
@@ -191,6 +192,40 @@ export type VisualSpec =
       sources: Array<{ label: string; signal: string; tone: "good" | "warn" | "risk" }>;
       impactChecks: string[];
       outcome: string;
+    }
+  | {
+      kind: "integration-health";
+      app: string;
+      source: string;
+      destination: string;
+      syncStatus: string;
+      dependants: Array<{ label: string; status: "ok" | "risk" }>;
+      symptom: string;
+    }
+  | {
+      kind: "map-anatomy";
+      layers: Array<{ label: string; role: string; outcome: string }>;
+      principle: string;
+    }
+  | {
+      kind: "interface-contract";
+      section: string;
+      purpose: string;
+      items: Array<{ number: string; label: string; question: string; evidence: string }>;
+    }
+  | {
+      kind: "interface-path";
+      source: string;
+      steps: Array<{ label: string; state: "good" | "warn" | "risk" }>;
+      decision: string;
+    }
+  | {
+      kind: "semantic-break";
+      field: string;
+      expected: string[];
+      received: string;
+      consumers: Array<{ label: string; outcome: string }>;
+      verdict: string;
     };
 
 export interface Scene {

@@ -123,7 +123,7 @@ const { visual, cta } = Astro.props;
 
   {visual.kind === "surface-grid" && (
     <div class:list={["surface-grid", visual.surfaces.length === 3 && "surface-grid-three"]}>
-      <div class="surface-centre"><span>IMPACT MAP</span><strong>{visual.centre}</strong></div>
+      <div class="surface-centre"><span>{visual.label ?? "IMPACT MAP"}</span><strong>{visual.centre}</strong></div>
       <div class="surface-cards">
         {visual.surfaces.map((surface, index) => (
           <article style={`--surface:${index}`}>
@@ -510,6 +510,86 @@ const { visual, cta } = Astro.props;
         </div>
       </div>
       <div class="factory-outcome"><i></i>{visual.outcome}</div>
+    </div>
+  )}
+
+  {visual.kind === "integration-health" && (
+    <div class="integration-health">
+      <div class="integration-health-head">
+        <div><span>CONNECTED APP</span><strong>{visual.app}</strong></div>
+        <b><i></i>{visual.syncStatus}</b>
+      </div>
+      <div class="integration-flow">
+        <article><span>SOURCE</span><strong>{visual.source}</strong></article>
+        <div class="integration-flow-line"><i></i><span>records updating</span><i></i></div>
+        <article><span>DESTINATION</span><strong>{visual.destination}</strong></article>
+      </div>
+      <div class="integration-dependants">
+        {visual.dependants.map((dependant) => (
+          <article class={`integration-${dependant.status}`}><i></i><strong>{dependant.label}</strong><span>{dependant.status === "ok" ? "Healthy" : "Wrong"}</span></article>
+        ))}
+      </div>
+      <div class="integration-symptom"><i></i>{visual.symptom}</div>
+    </div>
+  )}
+
+  {visual.kind === "map-anatomy" && (
+    <div class="map-anatomy">
+      <div class="map-anatomy-layers">
+        {visual.layers.map((layer, index) => (
+          <article style={`--map-layer:${index}`}>
+            <span>0{index + 1}</span>
+            <div><strong>{layer.label}</strong><p>{layer.role}</p></div>
+            <b>{layer.outcome}</b>
+          </article>
+        ))}
+      </div>
+      <div class="map-anatomy-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "interface-contract" && (
+    <div class="interface-contract">
+      <div class="interface-contract-head"><span>{visual.section}</span><strong>{visual.purpose}</strong></div>
+      <div class:list={["interface-contract-items", visual.items.length === 2 && "interface-contract-two"]}>
+        {visual.items.map((item) => (
+          <article>
+            <span>{item.number}</span>
+            <div><strong>{item.label}</strong><p>{item.question}</p></div>
+            <b>{item.evidence}</b>
+          </article>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "interface-path" && (
+    <div class="interface-path">
+      <div class="interface-path-source"><span>SOURCE EVENT</span><strong>{visual.source}</strong></div>
+      <div class="interface-path-grid">
+        {visual.steps.map((step, index) => (
+          <article class={`interface-path-${step.state}`} style={`--path-step:${index}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span><strong>{step.label}</strong><i></i>
+          </article>
+        ))}
+      </div>
+      <div class="interface-path-decision"><i></i><span>OPERATING DECISION</span><strong>{visual.decision}</strong></div>
+    </div>
+  )}
+
+  {visual.kind === "semantic-break" && (
+    <div class="semantic-break">
+      <div class="semantic-field">
+        <span>GOVERNED PROPERTY</span><strong>{visual.field}</strong>
+        <div class="semantic-values">{visual.expected.map((value) => <b>{value}</b>)}</div>
+      </div>
+      <div class="semantic-change"><span>Provider output changed</span><strong>{visual.received}</strong><i></i></div>
+      <div class="semantic-consumers">
+        {visual.consumers.map((consumer) => (
+          <article><i></i><div><strong>{consumer.label}</strong><p>{consumer.outcome}</p></div></article>
+        ))}
+      </div>
+      <div class="semantic-verdict"><i></i>{visual.verdict}</div>
     </div>
   )}
 
