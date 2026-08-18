@@ -226,6 +226,44 @@ export type VisualSpec =
       received: string;
       consumers: Array<{ label: string; outcome: string }>;
       verdict: string;
+    }
+  | {
+      kind: "use-case-fit";
+      cases: Array<{
+        label: string;
+        action: string;
+        autonomy: string;
+        review: string;
+        tone: "ready" | "blocked";
+      }>;
+      principle: string;
+    }
+  | {
+      kind: "operating-contract";
+      tool: string;
+      parts: Array<{ label: string; detail: string }>;
+      principle: string;
+    }
+  | {
+      kind: "autonomy-ladder";
+      levels: Array<{
+        number: string;
+        label: string;
+        action: string;
+        control: string;
+        tone: "good" | "warn" | "risk";
+      }>;
+      principle: string;
+    }
+  | {
+      kind: "intervention-router";
+      problem: string;
+      options: Array<{
+        label: string;
+        fit: string;
+        tone: "recommended" | "possible" | "avoid";
+      }>;
+      decision: string;
     };
 
 export interface Scene {

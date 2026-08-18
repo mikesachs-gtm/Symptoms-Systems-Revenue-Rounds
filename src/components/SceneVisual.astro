@@ -593,6 +593,71 @@ const { visual, cta } = Astro.props;
     </div>
   )}
 
+  {visual.kind === "use-case-fit" && (
+    <div class="use-case-fit">
+      <div class="use-case-fit-grid">
+        {visual.cases.map((item, index) => (
+          <article class={`use-case-${item.tone}`} style={`--use-case:${index}`}>
+            <div class="use-case-head"><span>USE CASE 0{index + 1}</span><b>{item.tone === "ready" ? "READY" : "NOT READY"}</b></div>
+            <strong>{item.label}</strong>
+            <p>{item.action}</p>
+            <dl>
+              <div><dt>Autonomy</dt><dd>{item.autonomy}</dd></div>
+              <div><dt>Review</dt><dd>{item.review}</dd></div>
+            </dl>
+          </article>
+        ))}
+      </div>
+      <div class="use-case-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "operating-contract" && (
+    <div class="operating-contract">
+      <div class="operating-contract-centre"><span>SELECTED COMPONENT</span><strong>{visual.tool}</strong></div>
+      <div class="operating-contract-grid">
+        {visual.parts.map((part, index) => (
+          <article style={`--contract-part:${index}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><strong>{part.label}</strong><p>{part.detail}</p></div>
+          </article>
+        ))}
+      </div>
+      <div class="operating-contract-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "autonomy-ladder" && (
+    <div class="autonomy-ladder">
+      <div class="autonomy-levels">
+        {visual.levels.map((level, index) => (
+          <article class={`autonomy-${level.tone}`} style={`--autonomy-level:${index}`}>
+            <span>{level.number}</span>
+            <div><strong>{level.label}</strong><p>{level.action}</p></div>
+            <b>{level.control}</b>
+          </article>
+        ))}
+      </div>
+      <div class="autonomy-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "intervention-router" && (
+    <div class="intervention-router">
+      <div class="intervention-problem"><span>OPERATING PROBLEM</span><strong>{visual.problem}</strong></div>
+      <div class="intervention-options">
+        {visual.options.map((option, index) => (
+          <article class={`intervention-${option.tone}`} style={`--intervention:${index}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{option.label}</strong>
+            <p>{option.fit}</p>
+          </article>
+        ))}
+      </div>
+      <div class="intervention-decision"><i></i>{visual.decision}</div>
+    </div>
+  )}
+
   {visual.kind === "close" && (
     <div class="close-visual">
       <div class="close-question">{visual.question}</div>
