@@ -5,6 +5,9 @@ export default defineConfig({
   base: "/Symptoms-Systems-Revenue-Rounds",
   output: "static",
   trailingSlash: "always",
+  devToolbar: {
+    enabled: false,
+  },
   build: {
     format: "directory",
   },

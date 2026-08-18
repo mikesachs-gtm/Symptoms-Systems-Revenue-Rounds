@@ -26,15 +26,19 @@ export type VisualSpec =
       hinge: number;
     }
   | {
-      kind: "record-map";
+      kind: "motion-contrast";
       before: string[];
       change: string;
+      after: string[];
+    }
+  | {
+      kind: "impact-grid";
       impacts: Array<{ label: string; value: string }>;
     }
   | {
-      kind: "orbit";
+      kind: "surface-grid";
       centre: string;
-      surfaces: string[];
+      surfaces: Array<{ label: string; detail: string }>;
     }
   | {
       kind: "matrix";

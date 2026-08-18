@@ -43,14 +43,15 @@ const { visual, cta } = Astro.props;
   )}
 
   {visual.kind === "comparison" && (
-    <div class="comparison-table">
-      <div class="comparison-head"><span>Visible symptom</span><span>Quick fix</span><span>Deeper question</span></div>
+    <div class="comparison-cards">
       {visual.items.map((item, index) => (
-        <div class="comparison-row" style={`--row:${index}`}>
-          <strong>{item.symptom}</strong>
-          <span>{item.assumption}</span>
-          <span class="question-cell"><i>?</i>{item.question}</span>
-        </div>
+        <article class="comparison-card" style={`--row:${index}`}>
+          <div class="comparison-symptom"><span>VISIBLE SYMPTOM</span><strong>{item.symptom}</strong></div>
+          <div class="comparison-diagnosis">
+            <div><span>QUICK FIX</span><p>{item.assumption}</p></div>
+            <div class="question-cell"><span>DEEPER QUESTION</span><p><i>?</i>{item.question}</p></div>
+          </div>
+        </article>
       ))}
     </div>
   )}
@@ -94,48 +95,57 @@ const { visual, cta } = Astro.props;
     </div>
   )}
 
-  {visual.kind === "record-map" && (
-    <div class="record-map">
+  {visual.kind === "motion-contrast" && (
+    <div class="motion-contrast">
       <div class="before-model">
         <span class="map-label">ORIGINAL MODEL</span>
         {visual.before.map((item) => <div class="record-pill"><i></i>{item}</div>)}
       </div>
       <div class="motion-change"><span>+</span><strong>{visual.change}</strong><i></i></div>
-      <div class="impact-grid">
-        {visual.impacts.map((impact, index) => (
-          <article style={`--impact:${index}`}>
-            <span>{impact.label}</span>
-            <strong>{impact.value}</strong>
+      <div class="after-model">
+        <span class="map-label">NEW OPERATING REQUIREMENTS</span>
+        {visual.after.map((item) => <div class="record-pill"><i></i>{item}</div>)}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "impact-grid" && (
+    <div class="impact-grid">
+      {visual.impacts.map((impact, index) => (
+        <article style={`--impact:${index}`}>
+          <span>{String(index + 1).padStart(2, "0")} · {impact.label}</span>
+          <strong>{impact.value}</strong>
+        </article>
+      ))}
+      <div class="collision-note"><i></i><span>Two operating models collide in one portal</span></div>
+    </div>
+  )}
+
+  {visual.kind === "surface-grid" && (
+    <div class:list={["surface-grid", visual.surfaces.length === 3 && "surface-grid-three"]}>
+      <div class="surface-centre"><span>IMPACT MAP</span><strong>{visual.centre}</strong></div>
+      <div class="surface-cards">
+        {visual.surfaces.map((surface, index) => (
+          <article style={`--surface:${index}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><strong>{surface.label}</strong><p>{surface.detail}</p></div>
           </article>
         ))}
       </div>
     </div>
   )}
 
-  {visual.kind === "orbit" && (
-    <div class="surface-orbit">
-      <div class="orbit-ring orbit-ring-one" aria-hidden="true"></div>
-      <div class="orbit-ring orbit-ring-two" aria-hidden="true"></div>
-      <div class="orbit-centre"><strong>{visual.centre.split("\n")[0]}</strong><span>{visual.centre.split("\n")[1]}</span></div>
-      {visual.surfaces.map((surface, index) => (
-        <div class="orbit-node" style={`--node:${index}; --nodes:${visual.surfaces.length}`}>
-          <span>{String(index + 1).padStart(2, "0")}</span><strong>{surface}</strong>
-        </div>
-      ))}
-    </div>
-  )}
-
   {visual.kind === "matrix" && (
-    <div class="diagnostic-matrix">
-      <div class="matrix-row matrix-head">
-        {visual.columns.map((column) => <span>{column}</span>)}
-        <span>Diagnosis</span>
-      </div>
+    <div class="diagnostic-cards">
       {visual.rows.map((row, index) => (
-        <div class:list={["matrix-row", `matrix-${row.tone}`]} style={`--matrix-row:${index}`}>
-          {row.values.map((value) => <span><i></i>{value}</span>)}
+        <article class:list={["diagnostic-card", `matrix-${row.tone}`]} style={`--matrix-row:${index}`}>
+          <div class="diagnostic-states">
+            {row.values.map((value, valueIndex) => (
+              <span><small>{visual.columns[valueIndex]}</small><b><i></i>{value}</b></span>
+            ))}
+          </div>
           <strong>{row.result}</strong>
-        </div>
+        </article>
       ))}
     </div>
   )}
