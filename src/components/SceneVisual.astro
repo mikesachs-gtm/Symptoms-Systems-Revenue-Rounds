@@ -194,6 +194,157 @@ const { visual, cta } = Astro.props;
     </div>
   )}
 
+  {visual.kind === "pipeline-snapshot" && (
+    <div class="pipeline-snapshot">
+      <div class="pipeline-toolbar">
+        <div><span>SALES</span><strong>New business pipeline</strong></div>
+        <span class="pipeline-filter">Quarter view</span>
+      </div>
+      <div class="pipeline-columns">
+        {visual.stages.map((stage, index) => (
+          <div class="pipeline-stage" style={`--pipeline-stage:${index}`}>
+            <div><strong>{stage.label}</strong><span>{stage.count}</span></div>
+            <i></i><i></i>
+          </div>
+        ))}
+      </div>
+      <article class="pipeline-focus-deal">
+        <div class="deal-card-head"><span>DEAL RECORD</span><strong>{visual.deal.name}</strong></div>
+        <div class="deal-card-value">{visual.deal.amount}</div>
+        <dl>
+          <div><dt>Stage</dt><dd>{visual.deal.stage}</dd></div>
+          <div><dt>Forecast</dt><dd>{visual.deal.forecast}</dd></div>
+          <div><dt>Probability</dt><dd>{visual.deal.probability}</dd></div>
+        </dl>
+      </article>
+      <div class="pipeline-alerts">
+        {visual.alerts.map((alert) => <span><i></i>{alert}</span>)}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "stage-claim" && (
+    <div class="stage-claim">
+      <article class="claim-stage-card">
+        <span>DEAL STAGE</span>
+        <strong>{visual.stage}</strong>
+        <p>{visual.statement}</p>
+      </article>
+      <div class="claim-operator" aria-hidden="true">=</div>
+      <div class="claim-evidence">
+        <span>TRACEABLE EVIDENCE</span>
+        {visual.evidence.map((item, index) => (
+          <div><i>{String(index + 1).padStart(2, "0")}</i><strong>{item}</strong></div>
+        ))}
+      </div>
+      <div class="claim-verdict"><i></i>{visual.verdict}</div>
+    </div>
+  )}
+
+  {visual.kind === "truth-chain" && (
+    <div class="truth-chain">
+      <div class="truth-chain-track">
+        {visual.steps.map((step, index) => (
+          <div class="truth-step" style={`--truth-step:${index}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{step}</strong>
+            {index < visual.steps.length - 1 && <i aria-hidden="true">→</i>}
+          </div>
+        ))}
+      </div>
+      <div class="truth-feedback"><i aria-hidden="true">↺</i><span>{visual.feedback}</span></div>
+    </div>
+  )}
+
+  {visual.kind === "proof-ladder" && (
+    <div class="proof-ladder">
+      {visual.levels.map((level, index) => (
+        <article class="proof-level" style={`--proof-level:${index}`}>
+          <span>0{index + 1} · {level.label}</span>
+          <small>{level.stages}</small>
+          <strong>{level.proof}</strong>
+          <p>{level.risk}</p>
+        </article>
+      ))}
+      <div class="proof-axis"><span>Cost of a false claim</span><i></i></div>
+    </div>
+  )}
+
+  {visual.kind === "control-grid" && (
+    <div class="control-grid">
+      {visual.controls.map((control, index) => (
+        <article style={`--control-card:${index}`}>
+          <div><span>0{index + 1}</span><strong>{control.label}</strong></div>
+          <p>{control.question}</p>
+          <small>{control.corruption}</small>
+        </article>
+      ))}
+    </div>
+  )}
+
+  {visual.kind === "deal-record" && (
+    <div class="deal-record">
+      <div class="deal-record-head">
+        <div><span>DEAL</span><strong>{visual.name}</strong></div>
+        <b>{visual.amount}</b>
+      </div>
+      <div class="deal-record-body">
+        {visual.fields.map((field) => (
+          <div class:list={["deal-field", `deal-field-${field.tone}`]}>
+            <span>{field.label}</span><strong>{field.value}</strong>
+          </div>
+        ))}
+      </div>
+      <div class="deal-record-note"><i></i>{visual.note}</div>
+    </div>
+  )}
+
+  {visual.kind === "evidence-audit" && (
+    <div class="evidence-audit">
+      <div class="evidence-audit-head"><span>EVIDENCE REVIEW</span><strong>{visual.deal}</strong></div>
+      <div class="evidence-findings">
+        {visual.findings.map((finding) => (
+          <article class={`evidence-${finding.strength}`}>
+            <div><strong>{finding.label}</strong><span>{finding.strength}</span></div>
+            <p>{finding.evidence}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "deal-reconstruction" && (
+    <div class="deal-reconstruction">
+      <div class="reconstruction-verdict"><span>MANAGER VERDICT</span><strong>{visual.verdict}</strong></div>
+      <div class="reconstruction-table">
+        {visual.changes.map((change) => (
+          <div>
+            <span>{change.label}</span>
+            <del>{change.from}</del>
+            <i aria-hidden="true">→</i>
+            <ins>{change.to}</ins>
+          </div>
+        ))}
+      </div>
+      <div class="reconstruction-actions">
+        {visual.actions.map((action, index) => <span><i>{index + 1}</i>{action}</span>)}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "evidence-layers" && (
+    <div class="evidence-layers">
+      {visual.layers.map((layer, index) => (
+        <article style={`--evidence-layer:${index}`}>
+          <span>0{index + 1}</span>
+          <div><strong>{layer.label}</strong><p>{layer.purpose}</p></div>
+          <small>{layer.examples}</small>
+        </article>
+      ))}
+      <div class="manager-rail"><i></i><span>{visual.manager}</span></div>
+    </div>
+  )}
+
   {visual.kind === "close" && (
     <div class="close-visual">
       <div class="close-question">{visual.question}</div>

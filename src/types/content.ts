@@ -67,6 +67,65 @@ export type VisualSpec =
       question: string;
       states: string[];
       ctaLabel: string;
+    }
+  | {
+      kind: "pipeline-snapshot";
+      stages: Array<{ label: string; count: string }>;
+      deal: {
+        name: string;
+        amount: string;
+        stage: string;
+        forecast: string;
+        probability: string;
+      };
+      alerts: string[];
+    }
+  | {
+      kind: "stage-claim";
+      stage: string;
+      statement: string;
+      evidence: string[];
+      verdict: string;
+    }
+  | {
+      kind: "truth-chain";
+      steps: string[];
+      feedback: string;
+    }
+  | {
+      kind: "proof-ladder";
+      levels: Array<{ label: string; stages: string; proof: string; risk: string }>;
+    }
+  | {
+      kind: "control-grid";
+      controls: Array<{ label: string; question: string; corruption: string }>;
+    }
+  | {
+      kind: "deal-record";
+      name: string;
+      amount: string;
+      fields: Array<{ label: string; value: string; tone: "neutral" | "warn" | "risk" }>;
+      note: string;
+    }
+  | {
+      kind: "evidence-audit";
+      deal: string;
+      findings: Array<{
+        label: string;
+        evidence: string;
+        strength: "adequate" | "weak" | "missing";
+      }>;
+    }
+  | {
+      kind: "deal-reconstruction";
+      verdict: string;
+      changes: Array<{ label: string; from: string; to: string }>;
+      actions: string[];
+    }
+  | {
+      kind: "evidence-layers";
+      layers: Array<{ label: string; purpose: string; examples: string }>;
+      manager: string;
     };
 
 export interface Scene {
