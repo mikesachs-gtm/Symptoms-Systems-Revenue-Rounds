@@ -658,6 +658,99 @@ const { visual, cta } = Astro.props;
     </div>
   )}
 
+  {visual.kind === "dashboard-display" && (
+    <div class="dashboard-display">
+      <div class="dashboard-display-head">
+        <div><span>REVENUE DASHBOARD</span><strong>{visual.title}</strong></div>
+        <b>Updated now</b>
+      </div>
+      <div class="dashboard-display-body">
+        <article class="dashboard-headline">
+          <span>{visual.headline.label}</span>
+          <strong>{visual.headline.value}</strong>
+          <p>{visual.headline.note}</p>
+        </article>
+        <div class="dashboard-metrics">
+          {visual.metrics.map((metric) => (
+            <article class={`dashboard-metric-${metric.tone}`}>
+              <span>{metric.label}</span>
+              <strong>{metric.value}</strong>
+              <p>{metric.detail}</p>
+              <i></i>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="dashboard-question"><i></i><strong>{visual.question}</strong></div>
+    </div>
+  )}
+
+  {visual.kind === "decision-contract" && (
+    <div class="decision-contract">
+      <div class="decision-contract-centre"><span>DECISION CONTRACT</span><strong>{visual.decision}</strong></div>
+      <div class="decision-contract-parts">
+        {visual.parts.map((part) => (
+          <article>
+            <span>{part.number}</span>
+            <div><strong>{part.label}</strong><p>{part.detail}</p></div>
+          </article>
+        ))}
+      </div>
+      <div class="decision-contract-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "role-surfaces" && (
+    <div class="role-surfaces">
+      <div class="role-model"><span>GOVERNED DATA MODEL</span><strong>{visual.sharedModel}</strong></div>
+      <div class="role-surface-grid">
+        {visual.roles.map((role, index) => (
+          <article style={`--role-surface:${index}`}>
+            <div><span>{role.role}</span><b>{role.cadence}</b></div>
+            <strong>{role.question}</strong>
+            <p>{role.surface}</p>
+          </article>
+        ))}
+      </div>
+      <div class="role-surface-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "decision-surface" && (
+    <div class="decision-surface">
+      <div class="decision-surface-head">
+        <div><span>{visual.role}</span><strong>{visual.decision}</strong></div>
+        <b>{visual.cadence}</b>
+      </div>
+      <div class="decision-evidence">
+        {visual.evidence.map((item) => (
+          <article class={`decision-evidence-${item.tone}`}>
+            <span>{item.label}</span><strong>{item.value}</strong><i></i>
+          </article>
+        ))}
+      </div>
+      <div class="decision-action">
+        <span>{visual.surface}</span>
+        <strong>{visual.action}</strong>
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "failure-board" && (
+    <div class="failure-board">
+      <div class="failure-board-grid">
+        {visual.failures.map((failure, index) => (
+          <article style={`--failure:${index}`}>
+            <span>0{index + 1}</span>
+            <div><strong>{failure.label}</strong><p>{failure.symptom}</p></div>
+            <b>{failure.consequence}</b>
+          </article>
+        ))}
+      </div>
+      <div class="failure-board-verdict"><i></i>{visual.verdict}</div>
+    </div>
+  )}
+
   {visual.kind === "close" && (
     <div class="close-visual">
       <div class="close-question">{visual.question}</div>

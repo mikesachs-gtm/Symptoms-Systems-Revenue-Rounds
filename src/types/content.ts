@@ -264,6 +264,49 @@ export type VisualSpec =
         tone: "recommended" | "possible" | "avoid";
       }>;
       decision: string;
+    }
+  | {
+      kind: "dashboard-display";
+      title: string;
+      headline: { label: string; value: string; note: string };
+      metrics: Array<{
+        label: string;
+        value: string;
+        detail: string;
+        tone: "good" | "warn" | "risk" | "neutral";
+      }>;
+      question: string;
+    }
+  | {
+      kind: "decision-contract";
+      decision: string;
+      parts: Array<{ number: string; label: string; detail: string }>;
+      principle: string;
+    }
+  | {
+      kind: "role-surfaces";
+      sharedModel: string;
+      roles: Array<{
+        role: string;
+        cadence: string;
+        question: string;
+        surface: string;
+      }>;
+      principle: string;
+    }
+  | {
+      kind: "decision-surface";
+      role: string;
+      cadence: string;
+      decision: string;
+      evidence: Array<{ label: string; value: string; tone: "good" | "warn" | "risk" }>;
+      action: string;
+      surface: string;
+    }
+  | {
+      kind: "failure-board";
+      failures: Array<{ label: string; symptom: string; consequence: string }>;
+      verdict: string;
     };
 
 export interface Scene {
