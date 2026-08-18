@@ -345,6 +345,174 @@ const { visual, cta } = Astro.props;
     </div>
   )}
 
+  {visual.kind === "identity-stack" && (
+    <div class="identity-stack">
+      <div class="identity-stack-head">
+        <span>REAL-WORLD CUSTOMER</span>
+        <strong>{visual.entity}</strong>
+        <i aria-hidden="true"></i>
+      </div>
+      <div class="identity-records">
+        {visual.records.map((record, index) => (
+          <article style={`--identity-record:${index}`}>
+            <div><span>COMPANY RECORD {index + 1}</span><b>{record.origin}</b></div>
+            <strong>{record.name}</strong>
+            <dl>
+              <div><dt>Owner</dt><dd>{record.owner}</dd></div>
+              <div><dt>Evidence</dt><dd>{record.evidence}</dd></div>
+            </dl>
+          </article>
+        ))}
+      </div>
+      <div class="identity-stack-status"><i></i>{visual.status}</div>
+    </div>
+  )}
+
+  {visual.kind === "recurrence-loop" && (
+    <div class="recurrence-loop">
+      <div class="recurrence-source"><span>DUPLICATE FACTORY</span><strong>{visual.source}</strong></div>
+      <div class="recurrence-track">
+        {visual.steps.map((step, index) => (
+          <article style={`--loop-step:${index}`}>
+            <span>0{index + 1}</span>
+            <strong>{step.label}</strong>
+            <p>{step.detail}</p>
+            {index < visual.steps.length - 1 && <i aria-hidden="true">→</i>}
+          </article>
+        ))}
+      </div>
+      <div class="recurrence-return"><span aria-hidden="true">↺</span><strong>{visual.result}</strong></div>
+    </div>
+  )}
+
+  {visual.kind === "identity-failures" && (
+    <div class="identity-failures">
+      <article class="failure-fragmentation">
+        <div class="failure-heading"><span>01</span><strong>Fragmentation</strong></div>
+        <div class="fragmentation-map">
+          <div class="real-entity">{visual.fragmentation.entity}</div>
+          <i aria-hidden="true">→</i>
+          <div class="record-copies">
+            {visual.fragmentation.records.map((record) => <span>{record}</span>)}
+          </div>
+        </div>
+        <p>{visual.fragmentation.consequence}</p>
+      </article>
+      <article class="failure-collision">
+        <div class="failure-heading"><span>02</span><strong>Collision</strong></div>
+        <div class="collision-map">
+          <div class="related-entities">
+            {visual.collision.entities.map((entity) => <span>{entity}</span>)}
+          </div>
+          <i aria-hidden="true">→</i>
+          <div class="collided-record">{visual.collision.record}</div>
+        </div>
+        <p>{visual.collision.consequence}</p>
+      </article>
+      <div class="identity-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "entity-boundary" && (
+    <div class="entity-boundary">
+      <div class="boundary-question"><span>IDENTITY QUESTION</span><strong>{visual.question}</strong></div>
+      <div class="boundary-options">
+        {visual.options.map((option, index) => (
+          <article style={`--boundary-option:${index}`}>
+            <span>0{index + 1}</span>
+            <strong>{option.label}</strong>
+            <p>{option.decision}</p>
+          </article>
+        ))}
+      </div>
+      <div class="boundary-rule"><i></i>{visual.rule}</div>
+    </div>
+  )}
+
+  {visual.kind === "identity-model" && (
+    <div class="identity-model">
+      <div class="identity-model-centre"><span>{visual.phase}</span><strong>{visual.centre}</strong></div>
+      <div class="identity-model-grid">
+        {visual.parts.map((part, index) => (
+          <article style={`--identity-part:${index}`}>
+            <span>0{index + 1}</span>
+            <div><strong>{part.label}</strong><p>{part.detail}</p></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {visual.kind === "match-router" && (
+    <div class="match-router">
+      <div class="match-input"><span>INCOMING RECORD</span><strong>{visual.input}</strong></div>
+      <div class="match-routes">
+        {visual.routes.map((route) => (
+          <article class={`match-${route.tone}`}>
+            <div><span>{route.label}</span><strong>{route.action}</strong></div>
+            <p>{route.evidence}</p>
+          </article>
+        ))}
+      </div>
+      <div class="match-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "ingress-map" && (
+    <div class="ingress-map">
+      <div class="ingress-sources">
+        <span>ENTRY PATHS</span>
+        <div>{visual.sources.map((source) => <strong>{source}</strong>)}</div>
+      </div>
+      <div class="ingress-hub"><span>IDENTITY CONTROL</span><i></i></div>
+      <div class="ingress-decisions">
+        <span>ALLOWED DECISIONS</span>
+        <div>{visual.decisions.map((decision) => <strong>{decision}</strong>)}</div>
+      </div>
+      <div class="ingress-control"><i></i>{visual.control}</div>
+    </div>
+  )}
+
+  {visual.kind === "company-identity" && (
+    <div class:list={["company-identity", `company-identity-${visual.mode}`]}>
+      <div class="company-identity-head">
+        <span>{visual.label}</span>
+        <div>{visual.signals.map((signal) => <b>{signal}</b>)}</div>
+      </div>
+      <div class="company-record-grid">
+        {visual.records.map((record, index) => (
+          <article class={`company-record-${record.status}`} style={`--company-record:${index}`}>
+            <span>COMPANY</span>
+            <strong>{record.name}</strong>
+            <p>{record.meta}</p>
+          </article>
+        ))}
+      </div>
+      <div class="company-verdict"><i></i>{visual.verdict}</div>
+    </div>
+  )}
+
+  {visual.kind === "duplicate-factory" && (
+    <div class="duplicate-factory">
+      <div class="factory-head"><span>IDENTITY RISK REVIEW</span><strong>Find the source, then measure the consequence.</strong></div>
+      <div class="factory-body">
+        <div class="factory-sources">
+          <span>CREATION PATH</span>
+          {visual.sources.map((source) => (
+            <article class={`factory-${source.tone}`}>
+              <i></i><strong>{source.label}</strong><p>{source.signal}</p>
+            </article>
+          ))}
+        </div>
+        <div class="factory-impact">
+          <span>IMPACT FILTERS</span>
+          <div>{visual.impactChecks.map((check) => <strong><i></i>{check}</strong>)}</div>
+        </div>
+      </div>
+      <div class="factory-outcome"><i></i>{visual.outcome}</div>
+    </div>
+  )}
+
   {visual.kind === "close" && (
     <div class="close-visual">
       <div class="close-question">{visual.question}</div>

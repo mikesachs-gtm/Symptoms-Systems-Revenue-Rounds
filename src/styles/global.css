@@ -9,7 +9,7 @@
 
 :root {
   --teal: #00d0b4;
-  --teal-dark: #008f7d;
+  --teal-dark: #007f70;
   --teal-soft: #ddfbf6;
   --navy: #0f172a;
   --navy-2: #17233d;
@@ -352,7 +352,7 @@ h1, h2, h3, .brand, .eyebrow, .scene-eyebrow, .episode-index { font-family: Mont
 .scene-eyebrow { display: flex; align-items: center; gap: 13px; margin-bottom: 22px; color: var(--teal-dark); font-size: clamp(0.78rem, 0.76vw, 0.94rem); font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
 .scene-navy .scene-eyebrow { color: var(--teal); }
 .scene-eyebrow span { min-width: 40px; height: 31px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 999px; font-size: 0.74rem; }
-.scene h1 { max-width: 720px; margin-bottom: 23px; font-size: clamp(2.95rem, 4vw, 5.45rem); line-height: 0.97; letter-spacing: -0.055em; text-wrap: balance; }
+.scene h1 { max-width: 720px; min-width: 0; margin-bottom: 15px; padding-bottom: 8px; font-size: clamp(2.95rem, 4vw, 5.45rem); line-height: 1.03; letter-spacing: -0.055em; overflow-wrap: break-word; text-wrap: balance; }
 .scene-lead { max-width: 680px; margin-bottom: 27px; color: var(--scene-muted); font-size: clamp(1.2rem, 1.28vw, 1.55rem); line-height: 1.48; }
 .scene blockquote { max-width: 640px; margin-bottom: 0; padding-left: 19px; border-left: 3px solid var(--teal); color: var(--scene-fg); font-family: Montserrat, sans-serif; font-size: clamp(1rem, 1.02vw, 1.22rem); font-weight: 700; line-height: 1.45; }
 .scene-visual { position: relative; z-index: 2; width: 100%; max-width: 980px; min-width: 0; justify-self: end; container-type: inline-size; }
@@ -402,7 +402,7 @@ h1, h2, h3, .brand, .eyebrow, .scene-eyebrow, .episode-index { font-family: Mont
 @media (max-height: 780px) {
   .scene-stage { padding-top: 64px; padding-bottom: 62px; }
   .scene-eyebrow { margin-bottom: 16px; }
-  .scene h1 { margin-bottom: 18px; font-size: clamp(2.75rem, 3.9vw, 4.4rem); }
+  .scene h1 { margin-bottom: 10px; font-size: clamp(2.75rem, 3.9vw, 4.4rem); }
   .scene-lead { margin-bottom: 20px; font-size: clamp(1.12rem, 1.22vw, 1.26rem); line-height: 1.44; }
   .scene blockquote { font-size: clamp(0.98rem, 1.06vw, 1.08rem); }
   .head-safe-zone { width: 200px; bottom: 76px; }

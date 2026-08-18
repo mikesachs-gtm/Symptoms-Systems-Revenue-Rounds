@@ -126,6 +126,71 @@ export type VisualSpec =
       kind: "evidence-layers";
       layers: Array<{ label: string; purpose: string; examples: string }>;
       manager: string;
+    }
+  | {
+      kind: "identity-stack";
+      entity: string;
+      records: Array<{ name: string; owner: string; evidence: string; origin: string }>;
+      status: string;
+    }
+  | {
+      kind: "recurrence-loop";
+      steps: Array<{ label: string; detail: string }>;
+      source: string;
+      result: string;
+    }
+  | {
+      kind: "identity-failures";
+      fragmentation: { entity: string; records: string[]; consequence: string };
+      collision: { entities: string[]; record: string; consequence: string };
+      principle: string;
+    }
+  | {
+      kind: "entity-boundary";
+      question: string;
+      options: Array<{ label: string; decision: string }>;
+      rule: string;
+    }
+  | {
+      kind: "identity-model";
+      phase: string;
+      centre: string;
+      parts: Array<{ label: string; detail: string }>;
+    }
+  | {
+      kind: "match-router";
+      input: string;
+      routes: Array<{
+        label: string;
+        evidence: string;
+        action: string;
+        tone: "good" | "warn" | "neutral" | "risk";
+      }>;
+      principle: string;
+    }
+  | {
+      kind: "ingress-map";
+      sources: string[];
+      decisions: string[];
+      control: string;
+    }
+  | {
+      kind: "company-identity";
+      mode: "context" | "collision" | "fragmentation" | "governed";
+      label: string;
+      signals: string[];
+      records: Array<{
+        name: string;
+        meta: string;
+        status: "neutral" | "good" | "warn" | "risk";
+      }>;
+      verdict: string;
+    }
+  | {
+      kind: "duplicate-factory";
+      sources: Array<{ label: string; signal: string; tone: "good" | "warn" | "risk" }>;
+      impactChecks: string[];
+      outcome: string;
     };
 
 export interface Scene {
