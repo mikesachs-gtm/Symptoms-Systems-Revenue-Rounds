@@ -343,11 +343,11 @@ h1, h2, h3, .brand, .eyebrow, .scene-eyebrow, .episode-index { font-family: Mont
   grid-template-columns: minmax(300px, 0.66fr) minmax(540px, 1.34fr);
   gap: clamp(22px, 2.4vw, 46px);
   align-items: center;
-  padding: clamp(68px, 7vh, 84px) clamp(250px, 17vw, 330px) clamp(66px, 6.8vh, 82px) clamp(42px, 4vw, 90px);
+  padding: clamp(68px, 7vh, 84px) clamp(260px, calc(17vw + 10px), 340px) clamp(66px, 6.8vh, 82px) clamp(42px, 4vw, 90px);
   transition: padding 220ms ease;
 }
 
-.presenter-shell[data-head-side="left"] .scene-stage { padding-right: clamp(42px, 4vw, 90px); padding-left: clamp(250px, 17vw, 330px); }
+.presenter-shell[data-head-side="left"] .scene-stage { padding-right: clamp(42px, 4vw, 90px); padding-left: clamp(260px, calc(17vw + 10px), 340px); }
 .scene-copy { position: relative; z-index: 3; min-width: 0; }
 .scene-eyebrow { display: flex; align-items: center; gap: 13px; margin-bottom: 22px; color: var(--teal-dark); font-size: clamp(0.78rem, 0.76vw, 0.94rem); font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
 .scene-navy .scene-eyebrow { color: var(--teal); }
@@ -409,8 +409,8 @@ h1, h2, h3, .brand, .eyebrow, .scene-eyebrow, .episode-index { font-family: Mont
 }
 
 @media (max-width: 1180px) {
-  .scene-stage { grid-template-columns: minmax(270px, 0.64fr) minmax(500px, 1.36fr); gap: 22px; padding-right: 235px; padding-left: 32px; }
-  .presenter-shell[data-head-side="left"] .scene-stage { padding-right: 32px; padding-left: 235px; }
+  .scene-stage { grid-template-columns: minmax(270px, 0.64fr) minmax(500px, 1.36fr); gap: 22px; padding-right: 250px; padding-left: 32px; }
+  .presenter-shell[data-head-side="left"] .scene-stage { padding-right: 32px; padding-left: 250px; }
   .scene h1 { font-size: clamp(2.65rem, 4vw, 4.2rem); }
 }
 

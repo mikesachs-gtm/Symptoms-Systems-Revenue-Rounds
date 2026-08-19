@@ -845,6 +845,32 @@ const { visual, cta } = Astro.props;
     </div>
   )}
 
+  {visual.kind === "capture-record" && (
+    <div class="capture-record">
+      <section class="capture-record-card">
+        <div class="capture-record-head">
+          <div><span>CONTACT</span><strong>{visual.contact.name}</strong><small>{visual.contact.email}</small></div>
+          <b><i></i>Created</b>
+        </div>
+        <div class="capture-record-meta">
+          <span><small>CREATED</small><strong>{visual.contact.created}</strong></span>
+          <span><small>RECORD SOURCE</small><strong>{visual.contact.source}</strong></span>
+        </div>
+        <div class="capture-record-fields">
+          {visual.fields.map((field) => (
+            <article class={`capture-field-${field.tone}`}><i></i><span>{field.label}</span><strong>{field.value}</strong></article>
+          ))}
+        </div>
+        <div class="capture-record-route"><span>AUTOMATION RESULT</span><strong>{visual.route}</strong></div>
+      </section>
+      <aside class="capture-record-gap">
+        <span>EVIDENCE MISSING</span>
+        <div>{visual.missing.map((item) => <strong><i></i>{item}</strong>)}</div>
+        <b>{visual.verdict}</b>
+      </aside>
+    </div>
+  )}
+
   {visual.kind === "account-priority" && (
     <div class="account-priority">
       <div class="account-priority-head">

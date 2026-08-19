@@ -358,6 +358,23 @@ export type VisualSpec =
       principle: string;
     }
   | {
+      kind: "capture-record";
+      contact: {
+        name: string;
+        email: string;
+        created: string;
+        source: string;
+      };
+      fields: Array<{
+        label: string;
+        value: string;
+        tone: "good" | "warn" | "risk" | "neutral";
+      }>;
+      route: string;
+      missing: string[];
+      verdict: string;
+    }
+  | {
       kind: "account-priority";
       company: string;
       score: string;

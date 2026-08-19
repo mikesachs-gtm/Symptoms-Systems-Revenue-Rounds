@@ -819,6 +819,39 @@
 .measurement-grid strong { color: var(--navy); font-family: Montserrat,sans-serif; font-size: .94rem; }
 .measurement-grid p { margin: 0; color: var(--muted); font-size: .78rem; font-weight: 650; line-height: 1.38; overflow-wrap: anywhere; }
 
+/* Lead-capture architecture episode */
+.capture-record { min-height: 510px; display: grid; grid-template-columns: minmax(0,1.45fr) minmax(190px,.7fr); align-items: stretch; gap: 12px; }
+.capture-record-card,.capture-record-gap { min-width: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 20px; box-shadow: 0 24px 60px rgba(0,0,0,.2); }
+.capture-record-card { display: grid; grid-template-rows: auto auto 1fr auto; background: rgba(23,35,61,.95); }
+.capture-record-head { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.capture-record-head div > span,.capture-record-meta small,.capture-record-route span,.capture-record-gap > span { display: block; color: var(--teal); font-size: .75rem; font-weight: 900; letter-spacing: .1em; }
+.capture-record-head div > strong { display: block; margin: 5px 0 3px; color: var(--white); font-family: Montserrat,sans-serif; font-size: 1.18rem; }
+.capture-record-head div > small { color: #9fadc0; font-size: .78rem; }
+.capture-record-head > b { display: flex; align-items: center; gap: 8px; color: #cdd7e4; font-size: .78rem; }
+.capture-record-head > b i { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 5px rgba(0,208,180,.1); }
+.capture-record-meta { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-bottom: 1px solid rgba(255,255,255,.1); }
+.capture-record-meta > span { min-width: 0; padding: 13px 18px; border-left: 1px solid rgba(255,255,255,.1); }
+.capture-record-meta > span:first-child { border-left: 0; }
+.capture-record-meta small { margin-bottom: 6px; color: #8999ad; }
+.capture-record-meta strong { color: #eef3f8; font-size: .82rem; line-height: 1.3; overflow-wrap: anywhere; }
+.capture-record-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; padding: 12px; }
+.capture-record-fields article { position: relative; min-width: 0; display: grid; align-content: center; gap: 7px; min-height: 92px; padding: 13px 14px; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; background: rgba(255,255,255,.045); }
+.capture-record-fields article > i { position: absolute; right: 12px; top: 12px; width: 8px; height: 8px; border-radius: 50%; background: #91a0b3; }
+.capture-record-fields .capture-field-good > i { background: var(--teal); }
+.capture-record-fields .capture-field-warn > i { background: var(--amber); }
+.capture-record-fields .capture-field-risk > i { background: var(--coral); }
+.capture-record-fields span { color: #8f9fb3; font-size: .75rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+.capture-record-fields strong { color: #edf2f7; font-size: .88rem; line-height: 1.28; overflow-wrap: anywhere; }
+.capture-record-route { min-height: 60px; display: grid; grid-template-columns: minmax(110px,.5fr) minmax(0,1.5fr); align-items: center; gap: 12px; padding: 11px 18px; color: var(--navy); background: var(--teal); }
+.capture-record-route span { color: var(--navy); }
+.capture-record-route strong { padding-left: 12px; border-left: 1px solid rgba(15,23,42,.22); font-size: .86rem; line-height: 1.3; }
+.capture-record-gap { display: grid; grid-template-rows: auto 1fr auto; gap: 16px; padding: 20px; background: rgba(197,72,72,.12); border-color: rgba(232,121,98,.28); }
+.capture-record-gap > span { color: #ffb5a7; }
+.capture-record-gap > div { display: grid; align-content: center; gap: 12px; }
+.capture-record-gap > div strong { display: flex; align-items: center; gap: 9px; padding: 11px 12px; border: 1px solid rgba(255,255,255,.1); border-radius: 11px; color: #eef3f8; background: rgba(255,255,255,.045); font-size: .8rem; line-height: 1.25; }
+.capture-record-gap > div i { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--coral); }
+.capture-record-gap > b { padding-top: 15px; border-top: 1px solid rgba(255,255,255,.12); color: #ffd6cf; font-family: Montserrat,sans-serif; font-size: .92rem; line-height: 1.35; }
+
 /* Target-segment translation episode */
 .account-priority,.targeting-concepts,.priority-engine,.outcome-router,.score-explainer { min-height: 510px; display: grid; align-content: center; gap: 12px; }
 .account-priority { overflow: hidden; grid-template-rows: auto 1fr auto auto; border: 1px solid rgba(255,255,255,.15); border-radius: 22px; background: rgba(23,35,61,.94); box-shadow: 0 28px 70px rgba(0,0,0,.24); }
@@ -843,10 +876,10 @@
 
 .targeting-concept-grid { min-width: 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; }
 .targeting-concept-grid article { min-width: 0; min-height: 197px; display: grid; grid-template-rows: auto auto 1fr auto; padding: 15px; border: 1px solid var(--line); border-top: 5px solid var(--teal-dark); border-radius: 14px; background: rgba(255,255,255,.92); box-shadow: 0 10px 24px rgba(15,23,42,.055); }
-.targeting-concept-grid article > span { color: var(--teal-dark); font-size: .74rem; font-weight: 900; }
+.targeting-concept-grid article > span { color: var(--teal-dark); font-size: .75rem; font-weight: 900; }
 .targeting-concept-grid article > strong { margin: 15px 0 8px; color: var(--navy); font-family: Montserrat,sans-serif; font-size: .91rem; line-height: 1.2; overflow-wrap: anywhere; }
 .targeting-concept-grid article > p { margin: 0; color: var(--muted); font-size: .76rem; font-weight: 650; line-height: 1.32; overflow-wrap: anywhere; }
-.targeting-concept-grid article > b { align-self: end; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); color: #7b5540; font-size: .72rem; line-height: 1.28; overflow-wrap: anywhere; }
+.targeting-concept-grid article > b { align-self: end; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); color: #7b5540; font-size: .75rem; line-height: 1.28; overflow-wrap: anywhere; }
 .targeting-concept-principle,.outcome-router-principle { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 47px; padding: 12px 16px; border-radius: 999px; color: var(--navy); background: var(--teal); font-size: .84rem; font-weight: 850; text-align: center; }
 .targeting-concept-principle i,.outcome-router-principle i { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--navy); }
 
@@ -876,7 +909,7 @@
 .outcome-router-grid .outcome-good { border-left-color: var(--teal-dark); }
 .outcome-router-grid .outcome-warn { border-left-color: var(--amber); }
 .outcome-router-grid .outcome-risk { border-left-color: var(--coral); }
-.outcome-router-grid article > span { grid-row: 1 / 3; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; color: var(--teal-dark); background: var(--teal-soft); font-size: .73rem; font-weight: 900; }
+.outcome-router-grid article > span { grid-row: 1 / 3; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; color: var(--teal-dark); background: var(--teal-soft); font-size: .75rem; font-weight: 900; }
 .outcome-router-grid article > strong { color: var(--navy); font-family: Montserrat,sans-serif; font-size: .91rem; line-height: 1.25; overflow-wrap: anywhere; }
 .outcome-router-grid article > p { margin: 0; color: var(--muted); font-size: .76rem; font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; }
 .outcome-router-grid article > i { position: absolute; right: 13px; top: 13px; width: 8px; height: 8px; border-radius: 50%; background: #91a0b3; }
@@ -909,7 +942,11 @@
 .scene-paper .surface-cards p,.scene-teal .surface-cards p,.scene-split .surface-cards p { color: var(--muted); }
 
 @container (max-width: 700px) {
-  .identity-stack,.identity-failures,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board,.funnel-gap,.bowtie-path,.transition-contract,.lifecycle-spine,.handoff-bridge,.value-progression,.measurement-grammar,.account-priority,.targeting-concepts,.priority-engine,.outcome-router,.score-explainer { min-height: 500px; }
+  .identity-stack,.identity-failures,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board,.funnel-gap,.bowtie-path,.transition-contract,.lifecycle-spine,.handoff-bridge,.value-progression,.measurement-grammar,.capture-record,.account-priority,.targeting-concepts,.priority-engine,.outcome-router,.score-explainer { min-height: 500px; }
+  .capture-record { grid-template-columns: minmax(0,1.38fr) minmax(165px,.62fr); }
+  .capture-record-head { min-height: 78px; padding: 13px 16px; }
+  .capture-record-fields article { min-height: 82px; padding: 11px 12px; }
+  .capture-record-gap { padding: 16px; }
   .identity-records { grid-template-columns: 1fr; gap: 8px; }
   .identity-records::before,.identity-records article::before,.identity-stack-head i { display: none; }
   .identity-records article { min-height: 104px; grid-template-columns: minmax(0,1fr) minmax(210px,1fr); align-items: center; gap: 10px; padding: 14px 16px; }
@@ -978,7 +1015,7 @@
 }
 
 @media (max-height: 780px) {
-  .identity-stack,.recurrence-loop,.identity-failures,.entity-boundary,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board,.funnel-gap,.bowtie-path,.transition-contract,.lifecycle-spine,.handoff-bridge,.value-progression,.measurement-grammar,.account-priority,.targeting-concepts,.priority-engine,.outcome-router,.score-explainer { min-height: 470px; }
+  .identity-stack,.recurrence-loop,.identity-failures,.entity-boundary,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board,.funnel-gap,.bowtie-path,.transition-contract,.lifecycle-spine,.handoff-bridge,.value-progression,.measurement-grammar,.capture-record,.account-priority,.targeting-concepts,.priority-engine,.outcome-router,.score-explainer { min-height: 470px; }
   .identity-records article { min-height: 104px; }
   .identity-failures > article { min-height: 360px; }
   .identity-model-grid article { min-height: 166px; }
@@ -987,6 +1024,8 @@
 }
 
 @media (max-width: 680px) {
+  .capture-record { grid-template-columns: 1fr; }
+  .capture-record-gap { min-height: 220px; }
   .identity-records article,.identity-failures,.boundary-options,.identity-model-grid,.match-routes,.company-record-grid,.company-identity-fragmentation .company-record-grid,.company-identity-governed .company-record-grid,.factory-body { grid-template-columns: 1fr; }
   .identity-records dl { grid-column: 1; grid-row: auto; }
   .identity-failures > article { min-height: 310px; }
