@@ -737,7 +737,7 @@ const { visual, cta } = Astro.props;
   )}
 
   {visual.kind === "failure-board" && (
-    <div class="failure-board">
+    <div class:list={["failure-board", visual.failures.length === 5 && "failure-board-five"]}>
       <div class="failure-board-grid">
         {visual.failures.map((failure, index) => (
           <article style={`--failure:${index}`}>
@@ -748,6 +748,100 @@ const { visual, cta } = Astro.props;
         ))}
       </div>
       <div class="failure-board-verdict"><i></i>{visual.verdict}</div>
+    </div>
+  )}
+
+  {visual.kind === "funnel-gap" && (
+    <div class="funnel-gap">
+      <div class="funnel-gap-row funnel-gap-acquisition">
+        {visual.acquisition.map((stage) => (
+          <article><span>{stage.label}</span><strong>{stage.evidence}</strong></article>
+        ))}
+      </div>
+      <div class="funnel-gap-handoff">
+        <span>{visual.handoff.label}</span><strong>{visual.handoff.status}</strong><i></i>
+      </div>
+      <div class="funnel-gap-row funnel-gap-postsale">
+        {visual.postSale.map((stage) => (
+          <article class={`funnel-gap-${stage.tone}`}><span>{stage.label}</span><strong>{stage.evidence}</strong><i></i></article>
+        ))}
+      </div>
+      <div class="funnel-gap-verdict"><i></i>{visual.verdict}</div>
+    </div>
+  )}
+
+  {visual.kind === "bowtie-path" && (
+    <div class="bowtie-path">
+      <div class="bowtie-path-grid">
+        {visual.phases.map((phase, index) => (
+          <article class={`bowtie-phase-${phase.side}`} style={`--phase:${index}`}>
+            <span>0{index + 1}</span><strong>{phase.label}</strong><p>{phase.evidence}</p>
+          </article>
+        ))}
+      </div>
+      <div class="bowtie-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "transition-contract" && (
+    <div class="transition-contract">
+      <div class="transition-contract-head">
+        <span>{visual.transition.from}</span><i></i><strong>{visual.transition.to}</strong>
+      </div>
+      <div class="transition-contract-parts">
+        {visual.parts.map((part) => (
+          <article><span>{part.number}</span><div><strong>{part.label}</strong><p>{part.detail}</p></div></article>
+        ))}
+      </div>
+      <div class="transition-contract-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "lifecycle-spine" && (
+    <div class="lifecycle-spine">
+      <div class="lifecycle-spine-head"><span>LIFECYCLE SPINE</span><strong>{visual.span}</strong></div>
+      <div class="lifecycle-object-grid">
+        {visual.objects.map((object, index) => (
+          <article style={`--object:${index}`}><span>0{index + 1}</span><div><strong>{object.label}</strong><p>{object.responsibility}</p></div></article>
+        ))}
+      </div>
+      <div class="lifecycle-spine-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "handoff-bridge" && (
+    <div class="handoff-bridge">
+      <div class="handoff-bridge-head"><span>{visual.transition.from}</span><i></i><strong>{visual.transition.to}</strong></div>
+      <div class="handoff-packet">
+        {visual.packet.map((item, index) => (
+          <article><span>0{index + 1}</span><div><strong>{item.label}</strong><p>{item.detail}</p></div></article>
+        ))}
+      </div>
+      <div class="handoff-acceptance"><span>ACCEPTANCE GATE</span><strong>{visual.acceptance}</strong></div>
+    </div>
+  )}
+
+  {visual.kind === "value-progression" && (
+    <div class="value-progression">
+      <div class="value-progression-grid">
+        {visual.steps.map((step, index) => (
+          <article class={`value-step-${step.tone}`}>
+            <span>0{index + 1}</span><strong>{step.label}</strong><p>{step.evidence}</p><b>{step.notEnough}</b>
+          </article>
+        ))}
+      </div>
+      <div class="value-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "measurement-grammar" && (
+    <div class="measurement-grammar">
+      <div class="measurement-grid">
+        {visual.metrics.map((metric, index) => (
+          <article><span>0{index + 1}</span><strong>{metric.label}</strong><p>{metric.question}</p></article>
+        ))}
+      </div>
+      <div class="measurement-principle"><i></i>{visual.principle}</div>
     </div>
   )}
 

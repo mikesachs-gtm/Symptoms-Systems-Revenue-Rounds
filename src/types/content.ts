@@ -307,6 +307,55 @@ export type VisualSpec =
       kind: "failure-board";
       failures: Array<{ label: string; symptom: string; consequence: string }>;
       verdict: string;
+    }
+  | {
+      kind: "funnel-gap";
+      acquisition: Array<{ label: string; evidence: string }>;
+      handoff: { label: string; status: string };
+      postSale: Array<{ label: string; evidence: string; tone: "good" | "warn" | "risk" }>;
+      verdict: string;
+    }
+  | {
+      kind: "bowtie-path";
+      phases: Array<{
+        label: string;
+        evidence: string;
+        side: "acquire" | "pivot" | "retain";
+      }>;
+      principle: string;
+    }
+  | {
+      kind: "transition-contract";
+      transition: { from: string; to: string };
+      parts: Array<{ number: string; label: string; detail: string }>;
+      principle: string;
+    }
+  | {
+      kind: "lifecycle-spine";
+      span: string;
+      objects: Array<{ label: string; responsibility: string }>;
+      principle: string;
+    }
+  | {
+      kind: "handoff-bridge";
+      transition: { from: string; to: string };
+      packet: Array<{ label: string; detail: string }>;
+      acceptance: string;
+    }
+  | {
+      kind: "value-progression";
+      steps: Array<{
+        label: string;
+        evidence: string;
+        notEnough: string;
+        tone: "warn" | "good" | "great";
+      }>;
+      principle: string;
+    }
+  | {
+      kind: "measurement-grammar";
+      metrics: Array<{ label: string; question: string }>;
+      principle: string;
     };
 
 export interface Scene {

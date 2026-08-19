@@ -732,12 +732,92 @@
 
 .failure-board { min-height: 510px; display: grid; align-content: center; gap: 13px; }
 .failure-board-grid { min-width: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.failure-board-five .failure-board-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.failure-board-five .failure-board-grid article { min-height: 208px; padding: 15px; }
 .failure-board-grid article { min-width: 0; min-height: 208px; display: grid; grid-template-columns: 38px minmax(0,1fr); align-content: start; gap: 9px 11px; padding: 18px; border: 1px solid var(--line); border-left: 5px solid var(--coral); border-radius: 15px; background: rgba(255,255,255,.9); box-shadow: 0 11px 26px rgba(15,23,42,.055); }
 .failure-board-grid article > span { grid-row: 1 / 3; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; color: #91443c; background: #fff0ed; font-size: .75rem; font-weight: 850; }
 .failure-board-grid strong { display: block; margin-bottom: 7px; color: var(--navy); font-family: Montserrat,sans-serif; font-size: .96rem; }
 .failure-board-grid p { margin: 0; color: var(--muted); font-size: .8rem; font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; }
 .failure-board-grid article > b { grid-column: 2; align-self: end; padding-top: 11px; border-top: 1px solid var(--line); color: #91443c; font-size: .78rem; line-height: 1.34; overflow-wrap: anywhere; }
 .failure-board-verdict { margin-top: 1px; }
+
+/* Revenue lifecycle bowtie episode */
+.funnel-gap,.bowtie-path,.transition-contract,.lifecycle-spine,.handoff-bridge,.value-progression,.measurement-grammar { min-height: 510px; display: grid; align-content: center; gap: 12px; }
+.funnel-gap-row { min-width: 0; display: grid; gap: 9px; }
+.funnel-gap-acquisition { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.funnel-gap-postsale { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.funnel-gap-row article { position: relative; min-width: 0; min-height: 102px; display: grid; align-content: center; gap: 9px; padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.92); box-shadow: 0 10px 24px rgba(15,23,42,.055); }
+.funnel-gap-row span { color: var(--muted); font-size: .76rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+.funnel-gap-row strong { color: var(--navy); font-family: Montserrat,sans-serif; font-size: .9rem; line-height: 1.3; overflow-wrap: anywhere; }
+.funnel-gap-postsale article { min-height: 112px; border-top: 4px solid #90a0b3; }
+.funnel-gap-postsale .funnel-gap-good { border-top-color: var(--teal-dark); }
+.funnel-gap-postsale .funnel-gap-warn { border-top-color: var(--amber); }
+.funnel-gap-postsale .funnel-gap-risk { border-top-color: var(--coral); }
+.funnel-gap-postsale article > i { position: absolute; right: 13px; top: 13px; width: 9px; height: 9px; border-radius: 50%; background: #90a0b3; }
+.funnel-gap-postsale .funnel-gap-good > i { background: var(--teal-dark); }
+.funnel-gap-postsale .funnel-gap-warn > i { background: var(--amber); }
+.funnel-gap-postsale .funnel-gap-risk > i { background: var(--coral); }
+.funnel-gap-handoff { min-height: 72px; display: grid; grid-template-columns: minmax(105px,.4fr) minmax(0,1.6fr) 12px; align-items: center; gap: 14px; padding: 13px 18px; border: 1px dashed rgba(225,93,78,.55); border-radius: 14px; background: #fff2ef; }
+.funnel-gap-handoff span { color: #91443c; font-size: .76rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.funnel-gap-handoff strong { color: var(--navy); font-family: Montserrat,sans-serif; font-size: .98rem; line-height: 1.3; }
+.funnel-gap-handoff i { width: 11px; height: 11px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 6px rgba(225,93,78,.12); }
+.funnel-gap-verdict,.bowtie-principle,.transition-contract-principle,.lifecycle-spine-principle,.value-principle,.measurement-principle { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 47px; padding: 12px 16px; border-radius: 999px; color: var(--navy); background: var(--teal); font-size: .84rem; font-weight: 850; line-height: 1.3; text-align: center; }
+.funnel-gap-verdict i,.bowtie-principle i,.transition-contract-principle i,.lifecycle-spine-principle i,.value-principle i,.measurement-principle i { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--navy); }
+
+.bowtie-path-grid { min-width: 0; display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 8px; align-items: center; }
+.bowtie-path-grid article { position: relative; min-width: 0; min-height: 325px; display: grid; align-content: center; gap: 14px; padding: 16px 13px; border: 1px solid rgba(255,255,255,.14); border-top: 5px solid var(--teal); border-radius: 15px; background: rgba(255,255,255,.055); }
+.scene-paper .bowtie-path-grid article,.scene-teal .bowtie-path-grid article,.scene-split .bowtie-path-grid article { border-color: var(--line); border-top-color: var(--teal-dark); background: var(--white); box-shadow: 0 12px 26px rgba(15,23,42,.06); }
+.bowtie-path-grid article::after { content: ""; position: absolute; z-index: 2; right: 0; top: 50%; width: 9px; height: 2px; background: var(--teal); }
+.bowtie-path-grid article:last-child::after { display: none; }
+.bowtie-phase-pivot { border-top-color: var(--amber) !important; }
+.bowtie-path-grid span { color: var(--teal); font-size: .75rem; font-weight: 900; }
+.scene-paper .bowtie-path-grid span,.scene-teal .bowtie-path-grid span,.scene-split .bowtie-path-grid span { color: var(--teal-dark); }
+.bowtie-path-grid strong { color: var(--white); font-family: Montserrat,sans-serif; font-size: .9rem; line-height: 1.2; overflow-wrap: anywhere; }
+.scene-paper .bowtie-path-grid strong,.scene-teal .bowtie-path-grid strong,.scene-split .bowtie-path-grid strong { color: var(--navy); }
+.bowtie-path-grid p { margin: 0; color: #bdc9d9; font-size: .76rem; font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; }
+.scene-paper .bowtie-path-grid p,.scene-teal .bowtie-path-grid p,.scene-split .bowtie-path-grid p { color: var(--muted); }
+
+.transition-contract-head,.handoff-bridge-head { min-height: 66px; display: grid; grid-template-columns: minmax(0,1fr) 70px minmax(0,1fr); align-items: center; gap: 12px; padding: 12px 18px; border: 1px solid rgba(0,208,180,.26); border-radius: 15px; background: rgba(0,208,180,.08); }
+.transition-contract-head span,.handoff-bridge-head span { color: var(--muted); font-size: .8rem; font-weight: 850; text-align: right; }
+.transition-contract-head strong,.handoff-bridge-head strong { color: var(--navy); font-family: Montserrat,sans-serif; font-size: 1rem; }
+.transition-contract-head i,.handoff-bridge-head i { position: relative; height: 2px; background: var(--teal-dark); }
+.transition-contract-head i::after,.handoff-bridge-head i::after { content: ""; position: absolute; right: 0; top: -4px; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--teal-dark); }
+.transition-contract-parts,.handoff-packet { min-width: 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; }
+.transition-contract-parts article,.handoff-packet article { min-width: 0; min-height: 141px; display: grid; grid-template-columns: 32px minmax(0,1fr); align-content: center; gap: 9px; padding: 13px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.9); }
+.transition-contract-parts article > span,.handoff-packet article > span,.lifecycle-object-grid article > span { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 9px; color: var(--teal-dark); background: var(--teal-soft); font-size: .75rem; font-weight: 900; }
+.transition-contract-parts strong,.handoff-packet strong,.lifecycle-object-grid strong { display: block; margin-bottom: 6px; color: var(--navy); font-size: .84rem; line-height: 1.25; }
+.transition-contract-parts p,.handoff-packet p,.lifecycle-object-grid p { margin: 0; color: var(--muted); font-size: .76rem; font-weight: 650; line-height: 1.32; overflow-wrap: anywhere; }
+
+.lifecycle-spine-head { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 18px; border: 1px solid rgba(0,208,180,.28); border-radius: 15px; color: var(--white); background: var(--navy); }
+.lifecycle-spine-head span { color: var(--teal); font-size: .76rem; font-weight: 900; letter-spacing: .1em; }
+.lifecycle-spine-head strong { font-family: Montserrat,sans-serif; font-size: 1rem; text-align: right; }
+.lifecycle-object-grid { min-width: 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; }
+.lifecycle-object-grid article { min-width: 0; min-height: 141px; display: grid; grid-template-columns: 32px minmax(0,1fr); align-content: center; gap: 9px; padding: 13px; border: 1px solid var(--line); border-left: 4px solid var(--teal-dark); border-radius: 14px; background: rgba(255,255,255,.92); }
+
+.handoff-bridge { grid-template-rows: auto 1fr auto; }
+.handoff-packet article { min-height: 151px; }
+.handoff-acceptance { min-height: 64px; display: grid; grid-template-columns: minmax(120px,.38fr) minmax(0,1.62fr); align-items: center; gap: 14px; padding: 12px 17px; border-radius: 14px; color: var(--navy); background: var(--teal); }
+.handoff-acceptance span { font-size: .75rem; font-weight: 900; letter-spacing: .08em; }
+.handoff-acceptance strong { padding-left: 14px; border-left: 1px solid rgba(15,23,42,.22); font-size: .88rem; line-height: 1.35; }
+
+.value-progression-grid { min-width: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
+.value-progression-grid article { min-width: 0; min-height: 425px; display: grid; grid-template-rows: auto auto 1fr auto; align-content: start; padding: 20px; border: 1px solid var(--line); border-top: 5px solid var(--amber); border-radius: 17px; background: rgba(255,255,255,.92); box-shadow: 0 12px 27px rgba(15,23,42,.06); }
+.value-progression-grid .value-step-good { border-top-color: var(--teal-dark); }
+.value-progression-grid .value-step-great { border-top-color: var(--teal); background: var(--navy); }
+.value-progression-grid article > span { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; color: var(--teal-dark); background: var(--teal-soft); font-size: .75rem; font-weight: 900; }
+.value-progression-grid article > strong { margin: 29px 0 16px; color: var(--navy); font-family: Montserrat,sans-serif; font-size: 1.08rem; }
+.value-progression-grid article > p { margin: 0; color: var(--muted); font-size: .84rem; font-weight: 650; line-height: 1.45; }
+.value-progression-grid article > b { align-self: end; margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--line); color: #91443c; font-size: .78rem; line-height: 1.35; }
+.value-progression-grid .value-step-great > strong { color: var(--white); }
+.value-progression-grid .value-step-great > p { color: #bdc9d9; }
+.value-progression-grid .value-step-great > b { border-color: rgba(255,255,255,.13); color: #ffd1cb; }
+
+.measurement-grid { min-width: 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; }
+.measurement-grid article { min-width: 0; min-height: 194px; display: grid; align-content: center; gap: 10px; padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.92); box-shadow: 0 10px 24px rgba(15,23,42,.05); }
+.measurement-grid article:last-child { grid-column: 2 / 4; min-height: 132px; }
+.measurement-grid span { color: var(--teal-dark); font-size: .75rem; font-weight: 900; }
+.measurement-grid strong { color: var(--navy); font-family: Montserrat,sans-serif; font-size: .94rem; }
+.measurement-grid p { margin: 0; color: var(--muted); font-size: .78rem; font-weight: 650; line-height: 1.38; overflow-wrap: anywhere; }
 
 .close-cta > span { min-height: 18px; display: inline-grid; place-items: center; line-height: 1.2; }
 
@@ -749,7 +829,7 @@
 .scene-paper .surface-cards p,.scene-teal .surface-cards p,.scene-split .surface-cards p { color: var(--muted); }
 
 @container (max-width: 700px) {
-  .identity-stack,.identity-failures,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board { min-height: 500px; }
+  .identity-stack,.identity-failures,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board,.funnel-gap,.bowtie-path,.transition-contract,.lifecycle-spine,.handoff-bridge,.value-progression,.measurement-grammar { min-height: 500px; }
   .identity-records { grid-template-columns: 1fr; gap: 8px; }
   .identity-records::before,.identity-records article::before,.identity-stack-head i { display: none; }
   .identity-records article { min-height: 104px; grid-template-columns: minmax(0,1fr) minmax(210px,1fr); align-items: center; gap: 10px; padding: 14px 16px; }
@@ -795,10 +875,18 @@
   .role-surface-grid article { min-height: 350px; padding: 16px; }
   .role-surface-grid article > div { align-items: flex-start; flex-direction: column; margin-bottom: 26px; }
   .role-surface-grid article > strong { min-height: 116px; font-size: .96rem; }
+  .bowtie-path-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .bowtie-path-grid article { min-height: 178px; transform: none; }
+  .bowtie-path-grid article::after { display: none; }
+  .transition-contract-parts,.handoff-packet,.lifecycle-object-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .transition-contract-parts article,.handoff-packet article,.lifecycle-object-grid article { min-height: 91px; }
+  .value-progression-grid article { min-height: 390px; padding: 17px; }
+  .measurement-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .measurement-grid article,.measurement-grid article:last-child { grid-column: auto; min-height: 103px; }
 }
 
 @media (max-height: 780px) {
-  .identity-stack,.recurrence-loop,.identity-failures,.entity-boundary,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board { min-height: 470px; }
+  .identity-stack,.recurrence-loop,.identity-failures,.entity-boundary,.identity-model,.match-router,.ingress-map,.company-identity,.duplicate-factory,.integration-health,.map-anatomy,.interface-contract,.interface-path,.semantic-break,.use-case-fit,.operating-contract,.autonomy-ladder,.intervention-router,.dashboard-display,.decision-contract,.role-surfaces,.decision-surface,.failure-board,.funnel-gap,.bowtie-path,.transition-contract,.lifecycle-spine,.handoff-bridge,.value-progression,.measurement-grammar { min-height: 470px; }
   .identity-records article { min-height: 104px; }
   .identity-failures > article { min-height: 360px; }
   .identity-model-grid article { min-height: 166px; }
@@ -837,4 +925,11 @@
   .decision-contract-parts { grid-template-columns: 1fr; }
   .decision-action { grid-template-columns: 1fr; }
   .decision-action strong { padding-left: 0; border-left: 0; }
+  .funnel-gap-acquisition,.funnel-gap-postsale,.bowtie-path-grid,.transition-contract-parts,.handoff-packet,.lifecycle-object-grid,.value-progression-grid,.measurement-grid { grid-template-columns: 1fr; }
+  .funnel-gap-row article,.bowtie-path-grid article,.transition-contract-parts article,.handoff-packet article,.lifecycle-object-grid article,.value-progression-grid article,.measurement-grid article,.measurement-grid article:last-child { grid-column: auto; min-height: 110px; transform: none; }
+  .transition-contract-head,.handoff-bridge-head { grid-template-columns: 1fr; }
+  .transition-contract-head span,.handoff-bridge-head span { text-align: left; }
+  .transition-contract-head i,.handoff-bridge-head i { display: none; }
+  .handoff-acceptance { grid-template-columns: 1fr; }
+  .handoff-acceptance strong { padding-left: 0; border-left: 0; }
 }
