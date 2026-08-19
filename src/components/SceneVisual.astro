@@ -737,7 +737,7 @@ const { visual, cta } = Astro.props;
   )}
 
   {visual.kind === "failure-board" && (
-    <div class:list={["failure-board", visual.failures.length === 5 && "failure-board-five"]}>
+    <div class:list={["failure-board", visual.failures.length >= 5 && "failure-board-dense"]}>
       <div class="failure-board-grid">
         {visual.failures.map((failure, index) => (
           <article style={`--failure:${index}`}>
@@ -842,6 +842,81 @@ const { visual, cta } = Astro.props;
         ))}
       </div>
       <div class="measurement-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "account-priority" && (
+    <div class="account-priority">
+      <div class="account-priority-head">
+        <div><span>COMPANY RECORD</span><strong>{visual.company}</strong></div>
+        <b><small>PRIORITY</small>{visual.score}</b>
+      </div>
+      <div class="account-priority-fields">
+        {visual.fields.map((field) => (
+          <article class={`account-field-${field.tone}`}>
+            <span>{field.label}</span><strong>{field.value}</strong><i></i>
+          </article>
+        ))}
+      </div>
+      <div class="account-priority-decision">
+        <span>NEXT DECISION</span><strong>{visual.decision}</strong>
+      </div>
+      <div class="account-priority-reason"><i></i>{visual.reason}</div>
+    </div>
+  )}
+
+  {visual.kind === "targeting-concepts" && (
+    <div class="targeting-concepts">
+      <div class="targeting-concept-grid">
+        {visual.concepts.map((concept, index) => (
+          <article style={`--concept:${index}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{concept.label}</strong>
+            <p>{concept.question}</p>
+            <b>{concept.boundary}</b>
+          </article>
+        ))}
+      </div>
+      <div class="targeting-concept-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "priority-engine" && (
+    <div class="priority-engine">
+      <div class="priority-gate"><span>{visual.gate.label}</span><strong>{visual.gate.result}</strong><i></i></div>
+      <div class="priority-layer-grid">
+        {visual.layers.map((layer, index) => (
+          <article class={`priority-layer-${layer.tone}`}>
+            <span>0{index + 1}</span><strong>{layer.label}</strong><p>{layer.evidence}</p><i></i>
+          </article>
+        ))}
+      </div>
+      <div class="priority-verdict"><span>DECISION</span><strong>{visual.verdict}</strong><p>{visual.reason}</p></div>
+    </div>
+  )}
+
+  {visual.kind === "outcome-router" && (
+    <div class="outcome-router">
+      <div class="outcome-router-grid">
+        {visual.outcomes.map((outcome, index) => (
+          <article class={`outcome-${outcome.tone}`}>
+            <span>0{index + 1}</span><strong>{outcome.label}</strong><p>{outcome.condition}</p><i></i>
+          </article>
+        ))}
+      </div>
+      <div class="outcome-router-principle"><i></i>{visual.principle}</div>
+    </div>
+  )}
+
+  {visual.kind === "score-explainer" && (
+    <div class="score-explainer">
+      <div class="score-number"><span>ACCOUNT SCORE</span><strong>{visual.score}</strong><b>{visual.status}</b></div>
+      <div class="score-evidence">
+        {visual.evidence.map((item) => (
+          <article class={`score-evidence-${item.tone}`}><i></i><span>{item.label}</span><strong>{item.value}</strong></article>
+        ))}
+      </div>
+      <div class="score-verdict"><span>VERDICT</span><strong>{visual.verdict}</strong><p>{visual.action}</p></div>
     </div>
   )}
 

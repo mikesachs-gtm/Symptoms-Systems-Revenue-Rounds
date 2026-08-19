@@ -356,6 +356,55 @@ export type VisualSpec =
       kind: "measurement-grammar";
       metrics: Array<{ label: string; question: string }>;
       principle: string;
+    }
+  | {
+      kind: "account-priority";
+      company: string;
+      score: string;
+      fields: Array<{
+        label: string;
+        value: string;
+        tone: "good" | "warn" | "risk" | "neutral";
+      }>;
+      decision: string;
+      reason: string;
+    }
+  | {
+      kind: "targeting-concepts";
+      concepts: Array<{ label: string; question: string; boundary: string }>;
+      principle: string;
+    }
+  | {
+      kind: "priority-engine";
+      gate: { label: string; result: string };
+      layers: Array<{
+        label: string;
+        evidence: string;
+        tone: "good" | "warn" | "risk" | "neutral";
+      }>;
+      verdict: string;
+      reason: string;
+    }
+  | {
+      kind: "outcome-router";
+      outcomes: Array<{
+        label: string;
+        condition: string;
+        tone: "good" | "warn" | "risk" | "neutral";
+      }>;
+      principle: string;
+    }
+  | {
+      kind: "score-explainer";
+      score: string;
+      status: string;
+      evidence: Array<{
+        label: string;
+        value: string;
+        tone: "good" | "warn" | "risk" | "neutral";
+      }>;
+      verdict: string;
+      action: string;
     };
 
 export interface Scene {
