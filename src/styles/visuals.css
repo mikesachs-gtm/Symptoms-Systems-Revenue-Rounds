@@ -169,15 +169,15 @@
 .pipeline-stage { min-height: 202px; padding: 15px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.035); }
 .pipeline-stage > div { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 16px; color: #dbe3ed; }
 .pipeline-stage > div strong { min-width: 0; font-size: .84rem; overflow-wrap: anywhere; }
-.pipeline-stage > div span { min-width: 28px; padding: 4px 6px; border-radius: 999px; color: var(--teal); text-align: center; background: rgba(0,208,180,.11); font-size: .72rem; font-weight: 800; }
+.pipeline-stage > div span { min-width: 28px; padding: 4px 6px; border-radius: 999px; color: var(--teal); text-align: center; background: rgba(0,208,180,.11); font-size: .75rem; font-weight: 800; }
 .pipeline-stage > i { display: block; height: 49px; margin-top: 9px; border: 1px solid rgba(255,255,255,.075); border-radius: 9px; background: rgba(255,255,255,.045); }
 .pipeline-focus-deal { position: absolute; z-index: 3; left: 24px; right: 24px; bottom: 62px; display: grid; grid-template-columns: minmax(0,1.25fr) auto minmax(250px,1fr); align-items: center; gap: 18px; padding: 18px 20px; border: 1px solid rgba(0,208,180,.42); border-radius: 16px; color: var(--white); background: #1c2a48; box-shadow: 0 18px 36px rgba(0,0,0,.3); }
-.deal-card-head span { display: block; margin-bottom: 6px; color: var(--teal); font-size: .72rem; font-weight: 850; letter-spacing: .12em; }
+.deal-card-head span { display: block; margin-bottom: 6px; color: var(--teal); font-size: .75rem; font-weight: 850; letter-spacing: .12em; }
 .deal-card-head strong { font-family: Montserrat,sans-serif; font-size: 1.06rem; }
 .deal-card-value { color: var(--white); font-family: Montserrat,sans-serif; font-size: 1.42rem; font-weight: 800; }
 .pipeline-focus-deal dl { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 0; }
 .pipeline-focus-deal dl div { min-width: 0; }
-.pipeline-focus-deal dt { margin-bottom: 5px; color: #9caabc; font-size: .7rem; }
+.pipeline-focus-deal dt { margin-bottom: 5px; color: #9caabc; font-size: .75rem; }
 .pipeline-focus-deal dd { margin: 0; color: #f2f5f9; font-size: .8rem; font-weight: 800; overflow-wrap: anywhere; }
 .pipeline-alerts { position: absolute; z-index: 4; left: 24px; right: 24px; bottom: 16px; display: flex; gap: 8px; }
 .pipeline-alerts span { display: flex; align-items: center; gap: 7px; padding: 8px 11px; border-radius: 999px; color: #ffddd5; background: rgba(232,121,98,.14); font-size: .76rem; font-weight: 750; }
