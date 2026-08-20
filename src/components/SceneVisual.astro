@@ -43,7 +43,7 @@ const { visual, cta } = Astro.props;
   )}
 
   {visual.kind === "comparison" && (
-    <div class="comparison-cards">
+    <div class:list={["comparison-cards", visual.items.length === 2 && "comparison-cards-two"]}>
       {visual.items.map((item, index) => (
         <article class="comparison-card" style={`--row:${index}`}>
           <div class="comparison-symptom"><span>VISIBLE SYMPTOM</span><strong>{item.symptom}</strong></div>
