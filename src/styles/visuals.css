@@ -214,7 +214,7 @@
 .proof-level strong { margin-bottom: 14px; color: var(--navy); font-family: Montserrat,sans-serif; font-size: 1.04rem; line-height: 1.34; }
 .proof-level p { margin: 0; padding-top: 13px; border-top: 1px solid var(--line); color: #8d4a3d; font-size: .82rem; font-weight: 700; line-height: 1.35; }
 .proof-axis { grid-column: 1; grid-row: 1; height: 390px; align-self: end; display: grid; justify-items: center; }
-.proof-axis span { writing-mode: vertical-rl; transform: rotate(180deg); color: var(--teal-dark); font-size: .73rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.proof-axis span { writing-mode: vertical-rl; transform: rotate(180deg); color: var(--teal-dark); font-size: .75rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .proof-axis i { width: 2px; height: 90px; margin-top: 12px; background: linear-gradient(var(--teal),var(--coral)); }
 
 .control-grid { min-height: 490px; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; align-content: center; }
