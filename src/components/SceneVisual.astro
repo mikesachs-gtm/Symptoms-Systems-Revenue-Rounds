@@ -923,7 +923,7 @@ const { visual, cta } = Astro.props;
 
   {visual.kind === "outcome-router" && (
     <div class="outcome-router">
-      <div class="outcome-router-grid">
+      <div class:list={["outcome-router-grid", visual.outcomes.length === 4 && "outcome-router-grid-four"]}>
         {visual.outcomes.map((outcome, index) => (
           <article class={`outcome-${outcome.tone}`}>
             <span>0{index + 1}</span><strong>{outcome.label}</strong><p>{outcome.condition}</p><i></i>
