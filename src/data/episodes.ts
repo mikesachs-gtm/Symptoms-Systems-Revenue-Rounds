@@ -9828,6 +9828,513 @@ export const episodes = [
       },
     ],
   },
+  {
+    slug: "signal-to-action-model",
+    title: "A Buying Signal Is Not an Instruction",
+    pillar: "Lead Management & Routing",
+    duration: "8–10 minutes",
+    summary:
+      "A visual operating model for turning buying evidence into governed decisions, owned actions, and returned outcomes.",
+    published: "2026-08-21",
+    cta: {
+      label: "Book a HubSpot Audit",
+      url: "https://gtmdiagnostics.com/meetings/sachs/audit?hsLang=en",
+      note: "Trace how signals become decisions, routes, actions, and learning inside your portal.",
+    },
+    scenes: [
+      {
+        id: "scene-01",
+        eyebrow: "The symptom",
+        heading: "The workflow worked. The commercial action was wrong.",
+        lead:
+          "A known contact visits pricing twice. HubSpot scores, alerts, and assigns exactly as configured.",
+        emphasis: "But the visitor is an existing customer with an open renewal.",
+        tone: "navy",
+        visual: {
+          kind: "dashboard-display",
+          title: "Buying-signal operations",
+          headline: {
+            label: "Intent score",
+            value: "87",
+            note: "Threshold passed · task created",
+          },
+          metrics: [
+            {
+              label: "Signal",
+              value: "Pricing ×2",
+              detail: "Observed in 48 hours",
+              tone: "good",
+            },
+            {
+              label: "Relationship",
+              value: "Customer",
+              detail: "Implementation manager",
+              tone: "risk",
+            },
+            {
+              label: "Commercial state",
+              value: "Renewal open",
+              detail: "43 days remaining",
+              tone: "warn",
+            },
+            {
+              label: "Action",
+              value: "Cold sequence",
+              detail: "Prospecting owner assigned",
+              tone: "risk",
+            },
+          ],
+          question: "Did the system detect intent—or misread context?",
+        },
+      },
+      {
+        id: "scene-02",
+        eyebrow: "The misdiagnosis",
+        heading: "More signals do not create better decisions.",
+        lead:
+          "Without a decision layer, signal programmes usually produce one of two expensive outcomes.",
+        emphasis: "Alert overload—or dashboard shelfware.",
+        tone: "paper",
+        visual: {
+          kind: "comparison",
+          items: [
+            {
+              symptom: "Every event becomes urgent",
+              assumption: "More alerts mean faster response",
+              question: "Which evidence actually changes the next action?",
+            },
+            {
+              symptom: "Signals accumulate in reports",
+              assumption: "Visibility will create adoption",
+              question: "Who owns the decision—and by when?",
+            },
+          ],
+        },
+      },
+      {
+        id: "scene-03",
+        eyebrow: "Context changes meaning",
+        heading: "The same signal can imply three different actions.",
+        lead:
+          "Actionability is not a property of the event. It is a decision contract applied to evidence in context.",
+        tone: "split",
+        visual: {
+          kind: "state-model",
+          centre: "Pricing-page revisit",
+          states: [
+            {
+              number: "01",
+              label: "Prospect",
+              detail: "Validate fit, ownership, and permission before outreach.",
+            },
+            {
+              number: "02",
+              label: "Open opportunity",
+              detail: "Notify the Deal team and connect the visit to active evaluation.",
+            },
+            {
+              number: "03",
+              label: "Customer",
+              detail: "Route through the relationship owner and renewal context.",
+            },
+          ],
+        },
+      },
+      {
+        id: "scene-04",
+        eyebrow: "The Action Delta",
+        heading: "A useful signal changes one of four things.",
+        lead:
+          "If the evidence does not alter priority, route, message, or timing, it has not yet become operational.",
+        tone: "teal",
+        visual: {
+          kind: "surface-grid",
+          centre: "Action Delta",
+          label: "What changes now?",
+          surfaces: [
+            { label: "Priority", detail: "Move the right account up—or down." },
+            { label: "Route", detail: "Send it to the right owner or queue." },
+            { label: "Message", detail: "Change the relevance and framing." },
+            { label: "Timing", detail: "Act now, wait, or set an expiry." },
+          ],
+        },
+      },
+      {
+        id: "scene-05",
+        eyebrow: "Keep the layers separate",
+        heading: "Evidence is not interpretation. Interpretation is not action.",
+        lead:
+          "Each layer needs its own rules, evidence, owner, and audit trail.",
+        tone: "paper",
+        visual: {
+          kind: "evidence-layers",
+          manager: "Decision contract",
+          layers: [
+            {
+              label: "Evidence",
+              purpose: "What happened?",
+              examples: "Visit · reply · hiring change",
+            },
+            {
+              label: "Interpretation",
+              purpose: "What might it mean here?",
+              examples: "Interest · urgency · expansion",
+            },
+            {
+              label: "Decision",
+              purpose: "What state is justified?",
+              examples: "Act · monitor · enrich",
+            },
+            {
+              label: "Action",
+              purpose: "What changes now?",
+              examples: "Owner · message · timing",
+            },
+          ],
+        },
+      },
+      {
+        id: "scene-06",
+        eyebrow: "The control chain · upstream",
+        heading: "A signal must survive six checks before prioritisation.",
+        lead:
+          "The visible alert is downstream of capture, identity, normalisation, and qualification.",
+        tone: "navy",
+        visual: {
+          kind: "chain",
+          steps: [
+            "Source",
+            "Ingress",
+            "Identity",
+            "Normalise",
+            "Qualify",
+            "Stack or score",
+          ],
+          hinge: 2,
+        },
+      },
+      {
+        id: "scene-07",
+        eyebrow: "The control chain · downstream",
+        heading: "The decision is only useful when the outcome returns.",
+        lead:
+          "Routing is the midpoint. Acceptance, engagement, and structured outcomes complete the system.",
+        tone: "navy",
+        visual: {
+          kind: "chain",
+          steps: [
+            "Decision",
+            "Route",
+            "Action packet",
+            "Acceptance",
+            "Engagement",
+            "Outcome",
+          ],
+          hinge: 2,
+        },
+      },
+      {
+        id: "scene-08",
+        eyebrow: "The event contract",
+        heading: "Make the evidence durable before you summarise it.",
+        lead:
+          "A governed signal event preserves when it happened, what it means, how certain it is, and what followed.",
+        tone: "paper",
+        visual: {
+          kind: "deal-record",
+          name: "Signal event · SIG-1042",
+          amount: "Observed · 09:42",
+          fields: [
+            { label: "Signal type", value: "Pricing revisit", tone: "neutral" },
+            { label: "Evidence class", value: "Observed behaviour", tone: "neutral" },
+            { label: "Identity", value: "Company + contact", tone: "neutral" },
+            { label: "Confidence", value: "Verified", tone: "neutral" },
+            { label: "Freshness", value: "Expires in 72h", tone: "warn" },
+            { label: "Rule version", value: "SIG-3.4", tone: "neutral" },
+          ],
+          note: "Append the decision, owner, due time, and outcome—do not overwrite the evidence.",
+        },
+      },
+      {
+        id: "scene-09",
+        eyebrow: "The activation gate",
+        heading: "A high-intent event can still fail the action gate.",
+        lead:
+          "Hard controls protect identity, relationship, permission, ownership, and relevance before automation acts.",
+        tone: "split",
+        visual: {
+          kind: "priority-engine",
+          gate: { label: "Hard gate", result: "Existing customer detected" },
+          layers: [
+            {
+              label: "Identity",
+              evidence: "Contact and company resolved",
+              tone: "good",
+            },
+            {
+              label: "Freshness",
+              evidence: "Observed inside 48 hours",
+              tone: "good",
+            },
+            {
+              label: "Relationship",
+              evidence: "Open renewal · CS owner active",
+              tone: "risk",
+            },
+            {
+              label: "Permission",
+              evidence: "No cold prospecting route",
+              tone: "warn",
+            },
+          ],
+          verdict: "Route to Customer Success",
+          reason: "The signal is real; the prospecting action is not eligible.",
+        },
+      },
+      {
+        id: "scene-10",
+        eyebrow: "Five valid decisions",
+        heading: "No action can be a governed decision.",
+        lead:
+          "Not every credible signal deserves immediate outreach. Four non-action states keep uncertainty explicit.",
+        tone: "paper",
+        visual: {
+          kind: "outcome-router",
+          outcomes: [
+            {
+              label: "Monitor",
+              condition: "Credible, but below the activation threshold",
+              tone: "neutral",
+            },
+            {
+              label: "Enrich",
+              condition: "Useful evidence, incomplete context",
+              tone: "warn",
+            },
+            {
+              label: "Quarantine",
+              condition: "Identity, permission, or provenance unresolved",
+              tone: "risk",
+            },
+            {
+              label: "Ignore",
+              condition: "Expired, irrelevant, duplicate, or excluded",
+              tone: "neutral",
+            },
+          ],
+          principle: "Unknown must never silently become Act.",
+        },
+      },
+      {
+        id: "scene-11",
+        eyebrow: "Scores have a boundary",
+        heading: "A score can order eligible work. It cannot create eligibility.",
+        lead:
+          "Identity, consent, relationship, fit, and ownership remain explicit gates outside the number.",
+        tone: "teal",
+        visual: {
+          kind: "score-explainer",
+          score: "87",
+          status: "Threshold passed",
+          evidence: [
+            { label: "Identity", value: "Resolved", tone: "good" },
+            { label: "Relationship", value: "Customer", tone: "risk" },
+            { label: "Owner", value: "CS manager", tone: "warn" },
+          ],
+          verdict: "Do not activate prospecting",
+          action: "Apply hard gates first. Rank only the work that remains eligible.",
+        },
+      },
+      {
+        id: "scene-12",
+        eyebrow: "Stacking without theatre",
+        heading: "Corroboration is stronger than arithmetic.",
+        lead:
+          "One signal category repeated three times is repetition. Independent categories create a more defensible interpretation.",
+        tone: "split",
+        visual: {
+          kind: "dependency-map",
+          decision: "Activate only when independent evidence agrees",
+          dependencies: [
+            "Change signal",
+            "Behaviour signal",
+            "Persona relevance",
+            "Direct engagement",
+          ],
+        },
+      },
+      {
+        id: "scene-13",
+        eyebrow: "The action packet",
+        heading: "Send context to the owner—not another alert.",
+        lead:
+          "The handoff should explain the evidence, its limits, the route, and the appropriate next move.",
+        tone: "paper",
+        visual: {
+          kind: "deal-record",
+          name: "Action packet · AP-287",
+          amount: "Due · Today 16:00",
+          fields: [
+            { label: "What happened", value: "Pricing revisited twice", tone: "neutral" },
+            { label: "May suggest", value: "Commercial evaluation", tone: "warn" },
+            { label: "Does not prove", value: "New purchase intent", tone: "neutral" },
+            { label: "Why relevant", value: "Renewal open in 43 days", tone: "neutral" },
+            { label: "Owner", value: "Customer Success", tone: "neutral" },
+            { label: "Next move", value: "Review before outreach", tone: "neutral" },
+          ],
+          note: "The owner receives a bounded interpretation—not a command disguised as data.",
+        },
+      },
+      {
+        id: "scene-14",
+        eyebrow: "Role-aware action",
+        heading: "The same signal needs different messages by role.",
+        lead:
+          "A governed system translates shared evidence into the question and next step each operator owns.",
+        tone: "navy",
+        visual: {
+          kind: "role-surfaces",
+          sharedModel: "Hiring surge + pricing revisit · Northstar account",
+          roles: [
+            {
+              role: "Account executive",
+              cadence: "Today",
+              question: "Does this change the active Deal?",
+              surface: "Deal task + evidence summary",
+            },
+            {
+              role: "Customer Success",
+              cadence: "Before outreach",
+              question: "Is this renewal or expansion context?",
+              surface: "Company timeline + renewal view",
+            },
+            {
+              role: "RevOps",
+              cadence: "Weekly",
+              question: "Did the rule produce a valid action?",
+              surface: "Decision log + exception queue",
+            },
+          ],
+          principle: "Shared evidence. Role-specific decision. Explicit owner.",
+        },
+      },
+      {
+        id: "scene-15",
+        eyebrow: "HubSpot operating design",
+        heading: "Separate the workflow responsibilities.",
+        lead:
+          "Small, observable workflows make failures visible and keep one automation from silently deciding everything.",
+        tone: "split",
+        visual: {
+          kind: "interface-path",
+          source: "Signal event · SIG-1042",
+          steps: [
+            { label: "Ingest + dedupe", state: "good" },
+            { label: "Resolve + associate", state: "good" },
+            { label: "Qualify + decide", state: "warn" },
+            { label: "Route + capture", state: "good" },
+          ],
+          decision: "Every workflow owns one responsibility, one log, and one exception path.",
+        },
+      },
+      {
+        id: "scene-16",
+        eyebrow: "Measure the system",
+        heading: "Track decision quality—not signal volume.",
+        lead:
+          "A useful programme measures whether evidence becomes accepted action and commercial movement.",
+        tone: "paper",
+        visual: {
+          kind: "measurement-grammar",
+          metrics: [
+            { label: "Acceptance", question: "Did the owner accept the action?" },
+            { label: "False positive", question: "Was the decision rejected as wrong?" },
+            { label: "Time to action", question: "How quickly did valid work begin?" },
+            { label: "Outcome completion", question: "Did the owner return a result?" },
+            { label: "Signal to movement", question: "Did the commercial state change?" },
+          ],
+          principle: "Counts describe activity. Returned outcomes improve the decision contract.",
+        },
+      },
+      {
+        id: "scene-17",
+        eyebrow: "Calibration",
+        heading: "Return the outcome to the rule that created the action.",
+        lead:
+          "Without structured outcomes, the programme cannot distinguish useful evidence from persistent noise.",
+        tone: "teal",
+        visual: {
+          kind: "control-loop",
+          trigger: "Structured outcome returned",
+          questions: [
+            "Which source produced it?",
+            "Which rule version fired?",
+            "Why was it accepted or rejected?",
+            "Did the account or Deal move?",
+            "What should change next?",
+          ],
+          outcome: "Versioned rule change",
+        },
+      },
+      {
+        id: "scene-18",
+        eyebrow: "Operating cadence",
+        heading: "Run signal governance at four speeds.",
+        lead:
+          "Operational queues, pattern reviews, economics, and strategy each need a different inspection rhythm.",
+        tone: "navy",
+        visual: {
+          kind: "cadence",
+          principles: [
+            "Daily · clear exceptions and stale actions",
+            "Weekly · review acceptance and false positives",
+            "Monthly · compare sources, costs, and movement",
+            "Quarterly · retest strategy and rule assumptions",
+          ],
+          cadence: "Daily → weekly → monthly → quarterly",
+          output: "A maintained signal-to-action system",
+        },
+      },
+      {
+        id: "scene-19",
+        eyebrow: "What good looks like",
+        heading: "The healthy state is explainable from event to outcome.",
+        lead:
+          "Every action can be traced to evidence, a rule version, an owner, and a returned result.",
+        tone: "paper",
+        visual: {
+          kind: "surface-grid",
+          centre: "Evidence → decision → action → outcome",
+          label: "Healthy operating state",
+          surfaces: [
+            { label: "Bounded evidence", detail: "Identity, freshness, and confidence stay visible." },
+            { label: "Explicit decision", detail: "Act, monitor, enrich, quarantine, or ignore." },
+            { label: "Owned action", detail: "Context, route, timing, and acceptance are clear." },
+            { label: "Returned outcome", detail: "Results recalibrate sources and rule versions." },
+          ],
+        },
+      },
+      {
+        id: "scene-20",
+        eyebrow: "The diagnostic close",
+        heading: "Does every signal create a justified Action Delta?",
+        lead:
+          "Inspect one material signal from source to outcome. If the decision cannot be explained, the alert is only the surface.",
+        emphasis: "The signal dashboard is the surface. The action contract is the system.",
+        tone: "navy",
+        visual: {
+          kind: "close",
+          question: "Would the same evidence produce the right action in every commercial context?",
+          states: [
+            "Evidence is bounded",
+            "Decision is explainable",
+            "Outcome is returned",
+          ],
+          ctaLabel: "Book a HubSpot Audit",
+        },
+      },
+    ],
+  },
 ] satisfies Episode[];
 
 export const episodeBySlug = new Map(episodes.map((episode) => [episode.slug, episode]));
