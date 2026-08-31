@@ -10335,6 +10335,498 @@ export const episodes = [
       },
     ],
   },
+  {
+    slug: "campaign-to-pipeline-model",
+    title: "Campaign-to-Pipeline Is a Chain of Evidence, Not a Dashboard Number",
+    pillar: "Marketing Operations & Attribution",
+    duration: "8–10 minutes",
+    summary:
+      "A visual control model for tracing governed campaign populations through engagement, Sales acceptance, opportunity entry, and defensible revenue claims.",
+    published: "2026-08-29",
+    cta: {
+      label: "Book a HubSpot Audit",
+      url: "https://gtmdiagnostics.com/meetings/sachs/audit?hsLang=en",
+      note: "Reconstruct the evidence chain between campaign activity, Sales acceptance, opportunity entry, and revenue claims.",
+    },
+    scenes: [
+      {
+        id: "scene-01",
+        eyebrow: "The symptom",
+        heading: "Marketing says 42. Sales says 17. Finance trusts neither.",
+        lead:
+          "The dashboard is not exposing a maths problem. It is exposing an operating bridge that nobody governed.",
+        emphasis: "Three teams. One campaign. Three versions of pipeline truth.",
+        tone: "navy",
+        visual: {
+          kind: "dashboard-display",
+          title: "Campaign contribution · Q3",
+          headline: {
+            label: "Marketing influenced",
+            value: "42",
+            note: "Opportunities linked to campaign activity",
+          },
+          metrics: [
+            {
+              label: "Sales accepted",
+              value: "17",
+              detail: "Recognised as valid commercial work",
+              tone: "warn",
+            },
+            {
+              label: "Finance approved",
+              value: "—",
+              detail: "No governed contribution definition",
+              tone: "risk",
+            },
+            {
+              label: "Origin known",
+              value: "9",
+              detail: "Deal-level evidence present",
+              tone: "neutral",
+            },
+            {
+              label: "Shared definition",
+              value: "0",
+              detail: "No cross-functional claim contract",
+              tone: "risk",
+            },
+          ],
+          question: "What evidence allowed each opportunity to enter the number?",
+        },
+      },
+      {
+        id: "scene-02",
+        eyebrow: "The misdiagnosis",
+        heading: "A better attribution model cannot repair missing operating decisions.",
+        lead:
+          "Changing the reporting layer may change the answer. It does not create the evidence the answer needs.",
+        tone: "paper",
+        visual: {
+          kind: "comparison",
+          items: [
+            {
+              symptom: "Teams dispute the pipeline number",
+              assumption: "Replace the attribution model",
+              question: "Who defined qualification, acceptance, and opportunity entry?",
+            },
+            {
+              symptom: "Campaign influence looks inflated",
+              assumption: "Tighten the report filters",
+              question: "Which evidence justifies the commercial claim?",
+            },
+          ],
+        },
+      },
+      {
+        id: "scene-03",
+        eyebrow: "Two operating ledgers",
+        heading: "Marketing and Sales record different realities.",
+        lead:
+          "Marketing sees populations, interactions, and qualification. Sales sees accepted work, opportunities, stages, and outcomes.",
+        emphasis: "The missing system is the bridge between them.",
+        tone: "split",
+        visual: {
+          kind: "handoff-bridge",
+          transition: { from: "Marketing ledger", to: "Sales ledger" },
+          packet: [
+            { label: "Who is eligible?", detail: "Population and exclusion rules" },
+            { label: "What happened?", detail: "Reach and engagement evidence" },
+            { label: "Why act?", detail: "Fit, threshold, and next-step context" },
+            { label: "What happened next?", detail: "Acceptance, opportunity, and outcome" },
+          ],
+          acceptance: "A governed hand-off and opportunity-entry contract",
+        },
+      },
+      {
+        id: "scene-04",
+        eyebrow: "The control model",
+        heading: "Campaign-to-pipeline is a chain of evidence.",
+        lead:
+          "Every transition needs a defined grain, evidence requirement, owner, and timestamp.",
+        tone: "teal",
+        visual: {
+          kind: "interface-path",
+          source: "Eligible campaign population",
+          steps: [
+            { label: "Reached → engaged", state: "good" },
+            { label: "Qualified → accepted", state: "warn" },
+            { label: "Opportunity → outcome", state: "warn" },
+            { label: "Interpreted", state: "good" },
+          ],
+          decision: "A claim is only as strong as its weakest transition.",
+        },
+      },
+      {
+        id: "scene-05",
+        eyebrow: "Control chain · upstream",
+        heading: "First prove who could receive treatment—and what they did.",
+        lead:
+          "Eligibility, delivery, engagement, and qualification answer four different questions.",
+        tone: "navy",
+        visual: {
+          kind: "chain",
+          steps: ["Eligible", "Reached", "Engaged", "Qualified"],
+          hinge: 2,
+        },
+      },
+      {
+        id: "scene-06",
+        eyebrow: "Control chain · downstream",
+        heading: "Then prove what the business accepted—and what progressed.",
+        lead:
+          "A qualified candidate does not become pipeline until the commercial system accepts and advances it.",
+        tone: "navy",
+        visual: {
+          kind: "chain",
+          steps: ["Accepted", "Opportunity", "Outcome", "Interpreted"],
+          hinge: 1,
+        },
+      },
+      {
+        id: "scene-07",
+        eyebrow: "Honest denominators",
+        heading: "Potential market is not campaign population.",
+        lead:
+          "Each narrowing step changes the denominator—and the question the resulting rate can answer.",
+        tone: "paper",
+        visual: {
+          kind: "outcome-router",
+          outcomes: [
+            { label: "Potential", condition: "Everyone the strategy might target", tone: "neutral" },
+            { label: "Eligible", condition: "Meets campaign rules and exclusions", tone: "good" },
+            { label: "Activated", condition: "Actually entered the treatment", tone: "warn" },
+            { label: "Reached", condition: "Delivery was technically evidenced", tone: "good" },
+          ],
+          principle: "Do not move the denominator to make the campaign look healthier.",
+        },
+      },
+      {
+        id: "scene-08",
+        eyebrow: "Reach is not response",
+        heading: "Delivery proves treatment—not buyer engagement.",
+        lead:
+          "An email delivery or ad impression confirms exposure. It does not confirm attention, interest, or commercial intent.",
+        tone: "split",
+        visual: {
+          kind: "comparison",
+          items: [
+            {
+              symptom: "Message delivered",
+              assumption: "The buyer engaged",
+              question: "What behaviour occurred after delivery?",
+            },
+            {
+              symptom: "Ad impression logged",
+              assumption: "The account showed intent",
+              question: "Was the identity, interaction, and relevance verified?",
+            },
+          ],
+        },
+      },
+      {
+        id: "scene-09",
+        eyebrow: "Evidence taxonomy",
+        heading: "Not every interaction carries the same commercial meaning.",
+        lead:
+          "Separate technical activity, qualifying engagement, and commercial response before a score collapses them into one number.",
+        tone: "paper",
+        visual: {
+          kind: "evidence-layers",
+          manager: "Evidence class stays visible",
+          layers: [
+            {
+              label: "Technical activity",
+              purpose: "A platform event occurred",
+              examples: "Open · impression · page load",
+            },
+            {
+              label: "Qualifying engagement",
+              purpose: "Relevant behaviour was observed",
+              examples: "Repeat visit · asset use · attendance",
+            },
+            {
+              label: "Commercial response",
+              purpose: "The buyer entered dialogue",
+              examples: "Reply · request · agreed next step",
+            },
+          ],
+        },
+      },
+      {
+        id: "scene-10",
+        eyebrow: "Qualification boundary",
+        heading: "Qualification creates a candidate packet—not pipeline.",
+        lead:
+          "The packet gives Sales enough evidence to make a decision without pretending that decision has already been made.",
+        tone: "teal",
+        visual: {
+          kind: "surface-grid",
+          centre: "Evidence ready for a Sales decision",
+          label: "Qualification packet",
+          surfaces: [
+            { label: "Identity", detail: "Resolved contact and company." },
+            { label: "Fit", detail: "Segment and exclusion checks." },
+            { label: "Evidence", detail: "Bounded engagement class." },
+            { label: "Next decision", detail: "Accept, modify, or reject." },
+          ],
+        },
+      },
+      {
+        id: "scene-11",
+        eyebrow: "Three authorisations",
+        heading: "MQL, MQA, and opportunity authorise different work.",
+        lead:
+          "When the states are treated as synonyms, reporting counts internal labels as commercial progress.",
+        tone: "paper",
+        visual: {
+          kind: "state-model",
+          centre: "What work is authorised?",
+          states: [
+            { number: "01", label: "MQL", detail: "Review a person-level candidate and its evidence." },
+            { number: "02", label: "MQA", detail: "Inspect an account-level pattern and buying context." },
+            { number: "03", label: "Opportunity", detail: "Manage a buyer-confirmed commercial motion." },
+          ],
+        },
+      },
+      {
+        id: "scene-12",
+        eyebrow: "Acceptance decisions · immediate",
+        heading: "Sales acceptance is a decision set—not a checkbox.",
+        lead:
+          "The result should explain what Sales decided and preserve the evidence needed to inspect that decision.",
+        tone: "split",
+        visual: {
+          kind: "outcome-router",
+          outcomes: [
+            { label: "Accept", condition: "Valid candidate; begin the agreed work", tone: "good" },
+            { label: "Modify", condition: "Useful candidate; change route or action", tone: "warn" },
+            { label: "Reject", condition: "Evidence or fit does not justify work", tone: "risk" },
+            { label: "Reroute", condition: "Valid, but owned by another motion", tone: "neutral" },
+          ],
+          principle: "Acceptance creates accountable work—not instant pipeline.",
+        },
+      },
+      {
+        id: "scene-13",
+        eyebrow: "Acceptance decisions · deferred",
+        heading: "Waiting states need owners and expiry rules.",
+        lead:
+          "Hold, defer, and expire are valid only when the system preserves why no immediate action occurred.",
+        emphasis: "Silence is not acceptance.",
+        tone: "paper",
+        visual: {
+          kind: "outcome-router",
+          outcomes: [
+            { label: "Hold", condition: "Decision blocked; owner and reason recorded", tone: "warn" },
+            { label: "Defer", condition: "Revisit at a known date or trigger", tone: "neutral" },
+            { label: "Expire", condition: "Evidence is no longer actionable", tone: "risk" },
+          ],
+          principle: "Every non-action state needs a reason, owner, and next condition.",
+        },
+      },
+      {
+        id: "scene-14",
+        eyebrow: "Opportunity entry",
+        heading: "An accepted hand-off is still not an opportunity.",
+        lead:
+          "Opportunity entry should require buyer evidence—not an internal stage change or a rep’s optimism.",
+        tone: "teal",
+        visual: {
+          kind: "transition-contract",
+          transition: { from: "Accepted hand-off", to: "Opportunity" },
+          parts: [
+            { number: "01", label: "Problem", detail: "Buyer confirms a material problem" },
+            { number: "02", label: "Impact", detail: "Commercial consequence is understood" },
+            { number: "03", label: "Decision path", detail: "Stakeholders and route are visible" },
+            { number: "04", label: "Next step", detail: "Buyer agrees a commercial action" },
+          ],
+          principle: "Internal interest does not create external buying evidence.",
+        },
+      },
+      {
+        id: "scene-15",
+        eyebrow: "The correct grain",
+        heading: "Opportunity origin belongs on the Deal.",
+        lead:
+          "Contact source describes identity history. Campaign membership describes treatment. The Deal describes one commercial motion.",
+        tone: "paper",
+        visual: {
+          kind: "deal-record",
+          name: "Northstar · Expansion motion",
+          amount: "€84,000",
+          fields: [
+            { label: "Opportunity origin", value: "No-Ops campaign", tone: "neutral" },
+            { label: "Origin evidence", value: "Buyer reply + agreed review", tone: "neutral" },
+            { label: "Origin date", value: "29 Aug 2026", tone: "neutral" },
+            { label: "Origin confidence", value: "Defensible", tone: "neutral" },
+            { label: "Primary campaign", value: "No-Ops diagnostic", tone: "neutral" },
+            { label: "Rule version", value: "OPP-2.3", tone: "neutral" },
+          ],
+          note: "Preserve identity history and campaign treatment without asking either to stand in for Deal origin.",
+        },
+      },
+      {
+        id: "scene-16",
+        eyebrow: "Cohort maturity",
+        heading: "The denominator has to mature with the numerator.",
+        lead:
+          "A campaign can generate engagement today and an opportunity weeks later. Reporting must preserve the time view.",
+        tone: "navy",
+        visual: {
+          kind: "measurement-grammar",
+          metrics: [
+            { label: "Period activity", question: "What happened inside this reporting window?" },
+            { label: "Entry cohort", question: "Which population entered together?" },
+            { label: "Matured conversion", question: "Which cohort had enough time to progress?" },
+            { label: "Current state", question: "Where are those records now?" },
+            { label: "Point-in-time", question: "What was known at the reporting cut-off?" },
+          ],
+          principle: "Never compare a mature numerator with an immature denominator.",
+        },
+      },
+      {
+        id: "scene-17",
+        eyebrow: "The claim ladder · evidence",
+        heading: "Start with claims the evidence can actually support.",
+        lead:
+          "Reach, engagement, and acceptance are useful facts. None automatically proves opportunity or revenue contribution.",
+        tone: "split",
+        visual: {
+          kind: "value-progression",
+          steps: [
+            { label: "Reached", evidence: "Treatment delivery evidenced", notEnough: "Does not prove attention", tone: "warn" },
+            { label: "Engaged", evidence: "Relevant interaction evidenced", notEnough: "Does not prove acceptance", tone: "good" },
+            { label: "Accepted", evidence: "Sales authorised work", notEnough: "Does not prove opportunity", tone: "great" },
+          ],
+          principle: "Use the lowest defensible claim before reaching for a higher one.",
+        },
+      },
+      {
+        id: "scene-18",
+        eyebrow: "The claim ladder · revenue",
+        heading: "Higher claims require stronger contracts.",
+        lead:
+          "Originated, influenced, attributed, and incremental answer different questions and demand different evidence.",
+        tone: "paper",
+        visual: {
+          kind: "autonomy-ladder",
+          levels: [
+            { number: "01", label: "Originated", action: "The motion began through this treatment", control: "Deal-level origin evidence", tone: "good" },
+            { number: "02", label: "Influenced", action: "The treatment affected an existing motion", control: "Defined influence window", tone: "warn" },
+            { number: "03", label: "Attributed", action: "A model allocates contribution", control: "Declared model + rules", tone: "warn" },
+            { number: "04", label: "Incremental", action: "The treatment caused additional outcome", control: "Counterfactual evidence", tone: "risk" },
+          ],
+          principle: "A higher claim never follows automatically from a lower one.",
+        },
+      },
+      {
+        id: "scene-19",
+        eyebrow: "HubSpot operating model",
+        heading: "Give every object a single job.",
+        lead:
+          "The evidence chain becomes inspectable when treatment, identity, hand-off, opportunity, and event history stay distinct.",
+        tone: "teal",
+        visual: {
+          kind: "lifecycle-spine",
+          span: "Treatment → identity → hand-off → commercial motion",
+          objects: [
+            { label: "Campaign", responsibility: "Treatment context and asset membership" },
+            { label: "Event", responsibility: "Timestamped reach and engagement evidence" },
+            { label: "Contact + Company", responsibility: "Identity, consent, fit, and current state" },
+            { label: "Lead / hand-off", responsibility: "Candidate packet and acceptance decision" },
+            { label: "Deal", responsibility: "One opportunity, origin, progression, and outcome" },
+          ],
+          principle: "Associations connect the chain. They do not erase object boundaries.",
+        },
+      },
+      {
+        id: "scene-20",
+        eyebrow: "Dashboard architecture · pages 0–2",
+        heading: "Start the dashboard with trust—not charts.",
+        lead:
+          "The first three pages establish scope, campaign health, qualification, and Sales acceptance.",
+        tone: "navy",
+        visual: {
+          kind: "role-surfaces",
+          sharedModel: "One governed campaign-to-pipeline data model",
+          roles: [
+            { role: "Page 0 · Trust", cadence: "Every review", question: "What is included, excluded, and mature?", surface: "Scope + definitions + freshness" },
+            { role: "Page 1 · Campaign", cadence: "Weekly", question: "Did the treatment reach the intended population?", surface: "Eligibility + delivery + engagement" },
+            { role: "Page 2 · Hand-off", cadence: "Weekly", question: "What did Sales accept—and why?", surface: "Qualification + decision outcomes" },
+          ],
+          principle: "A dashboard earns the right to discuss pipeline by exposing its evidence boundaries.",
+        },
+      },
+      {
+        id: "scene-21",
+        eyebrow: "Dashboard architecture · pages 3–4",
+        heading: "Progression and contribution belong on separate pages.",
+        lead:
+          "One page inspects opportunity movement. The other declares the claim method and extracts learning.",
+        tone: "paper",
+        visual: {
+          kind: "surface-grid",
+          centre: "Evidence before contribution",
+          label: "Decision surfaces",
+          surfaces: [
+            { label: "Page 3 · Progression", detail: "Opportunity entry, stage movement, velocity, and outcomes." },
+            { label: "Page 4 · Contribution", detail: "Origin, influence, attribution model, maturity, and learning." },
+          ],
+        },
+      },
+      {
+        id: "scene-22",
+        eyebrow: "Worked example",
+        heading: "One campaign can produce three valid outcomes.",
+        lead:
+          "The control chain preserves the difference between exposure, useful disqualification, and campaign-originated pipeline.",
+        tone: "split",
+        visual: {
+          kind: "state-model",
+          centre: "No-Ops diagnostic campaign",
+          states: [
+            { number: "A", label: "Reached", detail: "Viewed activity; no hand-off and no pipeline claim." },
+            { number: "B", label: "Accepted → disqualified", detail: "Too small. Useful outcome; still no pipeline." },
+            { number: "C", label: "Opportunity", detail: "Relevant reply, fit, and buyer-agreed next step." },
+          ],
+        },
+      },
+      {
+        id: "scene-23",
+        eyebrow: "What good looks like",
+        heading: "A healthy chain is explainable from population to outcome.",
+        lead:
+          "The operating model is documented, configured, owned, inspected, measured, and improved.",
+        tone: "paper",
+        visual: {
+          kind: "surface-grid",
+          centre: "Campaign → evidence → decision → revenue",
+          label: "Healthy operating state",
+          surfaces: [
+            { label: "Documented", detail: "Grains, states, evidence, and claims are explicit." },
+            { label: "Configured", detail: "Objects, properties, workflows, and timestamps agree." },
+            { label: "Owned + inspected", detail: "Transitions have owners and review cadences." },
+            { label: "Measured + improved", detail: "Outcomes recalibrate rules and campaign design." },
+          ],
+        },
+      },
+      {
+        id: "scene-24",
+        eyebrow: "The diagnostic close",
+        heading: "Can every pipeline claim replay its chain of evidence?",
+        lead:
+          "Choose one material campaign and trace a single opportunity back through entry, acceptance, qualification, engagement, reach, and eligibility.",
+        emphasis: "The dashboard reports the bridge. The control chain builds it.",
+        tone: "navy",
+        visual: {
+          kind: "close",
+          question: "Would Marketing, Sales, and Finance defend the same claim from the same evidence?",
+          states: ["Population is honest", "Transitions are owned", "Claims are defensible"],
+          ctaLabel: "Book a HubSpot Audit",
+        },
+      },
+    ],
+  },
 ] satisfies Episode[];
 
 export const episodeBySlug = new Map(episodes.map((episode) => [episode.slug, episode]));
